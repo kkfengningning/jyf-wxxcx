@@ -1,0 +1,26 @@
+{
+  "name": "wx",
+  "version": "1.0.0",
+  "description": "旧衣服微信xcx",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@vant/weapp": "^1.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkfengningning/jyf-wxxcx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkfengningning/jyf-wxxcx/issues"
+  },
+  "homepage": "https://github.com/kkfengningning/jyf-wxxcx#readme"
+}

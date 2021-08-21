@@ -20,7 +20,6 @@
     "navigationBarTitleText": "品优购",
     "navigationBarTextStyle": "white"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#999",
