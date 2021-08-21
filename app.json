@@ -12,7 +12,8 @@
     "pages/feedback/feedback",
     "pages/login/login",
     "pages/auth/auth",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/classification/classification"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +23,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "custom": true,
     "color": "#999",
     "selectedColor": "#1DD798",
     "backgroundColor": "",

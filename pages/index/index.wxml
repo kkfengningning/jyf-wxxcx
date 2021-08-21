@@ -13,7 +13,7 @@
   </view>
   <!-- 分类 -->
   <view class="index_cate">
-    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/category/category" open-type="switchTab">
+    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/classification/classification">
       <image src="{{item.image_src}}" mode="widthFix" />
       <view class="index_cate_title">小白哦提</view>
     </navigator>

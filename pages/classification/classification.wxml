@@ -1,0 +1,7 @@
+<!--pages/classification/classification.wxml-->
+<van-dropdown-menu>
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item id="item" title="{{ itemTitle }}">
+    <van-area bind:change="onChange" bind:confirm="onConfirm" bind:cancel="onClose" area-list="{{ areaList }}" columns-num="{{ 2 }}" title="请选择" />
+  </van-dropdown-item>
+</van-dropdown-menu>

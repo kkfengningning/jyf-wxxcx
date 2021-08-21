@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -34,10 +34,12 @@
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": true,
-    "packNpmRelationList": [{
-      "packageJsonPath": "./package.json",
-      "miniprogramNpmDistDir": "./miniprogram/"
-    }],
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./miniprogram/"
+      }
+    ],
     "minifyWXSS": true,
     "showES6CompileOption": false
   },
@@ -74,6 +76,13 @@
           "id": -1,
           "name": "分类",
           "pathName": "pages/category/category",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1111,
+          "name": "产品分类",
+          "pathName": "pages/classification/classification",
           "query": "",
           "scene": null
         },

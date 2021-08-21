@@ -16,7 +16,6 @@ Page({
         this.getSwiperList();
         this.getCateList();
         this.getFloorList();
-        this.getCateList()
     },
     // 获取 分类导航数据
     // getCateList() {
@@ -43,6 +42,23 @@ Page({
     },
     // 获取 分类导航数据
     getCateList() {
+        wx.login({
+            success (res) {
+              if (res.code) {
+                  console.log('login',res);
+                //发起网络请求
+                wx.request({
+                  url: 'http://192.168.0.118:8080/wx/auth/loginByWechat',
+                  method:'POST',
+                  data: {
+                    code: res.code,
+                  }
+                })
+              } else {
+                console.log('登录失败！' + res.errMsg)
+              }
+            }
+          })
         request({ url: "/home/catitems" })
             .then(result => {
                let newResult = result;
