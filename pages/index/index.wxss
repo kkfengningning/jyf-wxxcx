@@ -1,0 +1,106 @@
+swiper {
+  width: 100%;
+  height: 312.8rpx;
+}
+.index_swiper{
+ width: 92%;
+ margin:0 auto;
+}
+swiper image {
+  width: 100%;
+  height: 340rpx;
+}
+.index_cate {
+  overflow: hidden;
+}
+.index_cate_title{
+  font-size: 26rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #484848;
+  line-height: 15rpx;
+  text-align: center;
+}
+.index_cate navigator {
+  width: 20%;
+  float: left;
+  padding: 20rpx;
+}
+.index_cate navigator image {
+  display: block;
+  border-radius:25rpx;
+  width: 50%;
+  margin: 0 auto;
+}
+.index_floor {
+  overflow: hidden;
+  padding-top: 44rpx;
+}
+.index_floor .floor_title {
+  width: 100%;
+  font-size: 31rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: bold;
+  color: #000000;
+  line-height: 48rpx;
+  border-left: 10rpx solid #1DD798;
+  margin-left: 8rpx;
+  padding-left: 10rpx;
+}
+.index_floor .floor_title text {
+  width: 190rpx;
+  height: 39rpx;
+  background: #1DD798;
+  font-size: 24rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.index_floor .floor_list {
+  padding:10rpx 20rpx 0 10rpx ;
+}
+.index_floor .floor_list navigator {
+  float: left;
+  width: 50%;
+  border-bottom:1px solid #cccccc;
+}
+.index_floor .floor_list navigator:nth-child(odd) {
+  border-right:1px solid #cccccc;
+}
+.index_floor .floor_list navigator image {
+  width: 90%;
+  display: block;
+  margin:0 auto;
+  height: 200rpx;
+  padding-top: 10rpx;
+}
+.index_floor .floor_list navigator text {
+  width: 90%;
+  margin:0 auto;
+  display: block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.index_floor .floor_list navigator .list_name {
+  font-size: 30rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #484848;
+  line-height: 34rpx;
+}
+.index_floor .floor_list navigator .list_jj {
+  width: 300rpx;
+  background-color: #1DD798;
+  font-size: 24rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 46rpx;
+  border-radius: 10px;
+}
+.index_floor .floor_list navigator .list_dw {
+  font-size: 24rpx;
+  color:#cccccc;
+  padding-bottom: 30rpx;
+}

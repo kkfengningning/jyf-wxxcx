@@ -1,0 +1,44 @@
+<view class="pyg_index">
+  <!-- 搜索框 -->
+  <!-- <searchInput></searchInput> -->
+  <!-- 轮播图 -->
+  <view class="index_swiper">
+    <swiper indicator-dots autoplay circular>
+      <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+        <navigator url="{{item.navigator_url}}">
+          <image src="{{item.image_src}}" mode="widthFix" />
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 分类 -->
+  <view class="index_cate">
+    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/category/category" open-type="switchTab">
+      <image src="{{item.image_src}}" mode="widthFix" />
+      <view class="index_cate_title">小白哦提</view>
+    </navigator>
+  </view>
+  <!-- 楼层区 -->
+  <view class="index_floor" wx:for="{{floorList}}" wx:for-item="item1" wx:for-index="index1" wx:key="name">
+    <view class="floor_title">
+      推荐好货
+      <text>猜猜你是否喜欢</text>
+    </view>
+    <view class="floor_list">
+      <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="name" url="{{util.urlFormat(item2.navigator_url)}}">
+        <image src="{{item2.image_src}}"/>
+        <text class="list_name">爱上了大飒飒ask的骄傲快乐圣诞节大厦深刻理解的卡拉圣诞节</text>
+        <text class="list_jj">撒低级阿萨的卡拉库里圣诞快乐啊是多久啊觉得啊撒旦吉萨离开</text>
+        <text class="list_dw">撒低级阿萨的卡拉库里圣诞快乐啊是多久啊觉得啊撒旦吉萨离开</text>
+      </navigator>
+    </view>
+  </view>
+</view>
+<wxs module="util">
+  // 这里不支持一些新特性
+  module.exports = {
+    urlFormat: function (input) {
+      return input.replace('?', '/goods_list?')
+    }
+  }
+</wxs>
