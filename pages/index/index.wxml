@@ -33,6 +33,7 @@
       </navigator>
     </view>
   </view>
+  <van-dialog id="van-dialog" />
 </view>
 <wxs module="util">
   // 这里不支持一些新特性

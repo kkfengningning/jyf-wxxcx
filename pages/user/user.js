@@ -18,5 +18,10 @@ Page({
             userInfo,
             collectNumber: collect.length
         })
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+            this.getTabBar().setData({
+              selected: 3  //这个数字是当前页面在tabBar中list数组的索引
+            })
+          }
     }
 })

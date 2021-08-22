@@ -1,3 +1,5 @@
+var app = getApp()
+import Dialog from '../miniprogram_npm/@vant/weapp/dialog/dialog';
 Component({
   data: {
     selected: 0,
@@ -5,25 +7,25 @@ Component({
     selectedColor: "#3cc51f",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "/pages/index/index",
         "text": "首页",
         "iconPath": "/icons/home.png",
         "selectedIconPath": "/icons/home-o.png"
       },
       {
-        "pagePath": "pages/category/category",
+        "pagePath": "/pages/category/category",
         "text": "分类",
         "iconPath": "/icons/category.png",
         "selectedIconPath": "/icons/category-o.png"
       },
       {
-        "pagePath": "pages/cart/cart",
+        "pagePath": "/pages/cart/cart",
         "text": "通讯录",
         "iconPath": "/icons/cart.png",
         "selectedIconPath": "/icons/cart-o.png"
       },
       {
-        "pagePath": "pages/user/user",
+        "pagePath": "/pages/user/user",
         "text": "我的",
         "iconPath": "/icons/my.png",
         "selectedIconPath": "/icons/my-o.png"
@@ -34,16 +36,49 @@ Component({
   },
   methods: {
     switchTab(e) {
-      console.log('e',e);
       const data = e.currentTarget.dataset
       const url = data.path
-      if(data.index!==0){
+      console.log('11',app.globalData.hasLogin);
+      if(app.globalData.hasLogin == true){
+        wx.switchTab({url})
+        this.setData({
+          selected: data.index
+        })
+      } else {
+        Dialog.alert({
+          message: '您还未登录请先登录填写用户信息再进行操作',
+          confirmButtonText:'微信授权',
+          showCancelButton:'true',
+          confirmButtonOpenType:'getUserInfo'
+        }).then(() => {
+          // on close
+          wx.getUserInfo({
+            success: function(res) {
+             console.log('getUserInfo',res);
+             wx.request({
+              url: 'http://192.168.0.118:8080/wx/auth/bindPhone',
+              method:'POST',
+              header: {
+                'content-type': 'application/json', // 默认值
+                'X-CR-Token': app.globalData.token
+              },
+              data: {
+                encryptedData: res.encryptedData,
+                iv: res.iv,
+              },
+              success (res) {
+                console.log('res',res);
+                if(res.statusCode == 200 && res.data.code == 0){
+                  this.globalData.hasLogin = true;
+                  this.globalData.token=res.data.result.token;
+                }
+              }
+            })
+            }
+          })
+        });
         return;
       }
-      wx.switchTab({url})
-      this.setData({
-        selected: data.index
-      })
     }
   }
 })

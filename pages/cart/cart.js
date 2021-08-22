@@ -41,6 +41,13 @@ Page({
             console.log(err);
         }
     },
+    onShow: function () {
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+          this.getTabBar().setData({
+            selected: 2  //这个数字是当前页面在tabBar中list数组的索引
+          })
+        }
+      },
     //商品选择状态改变
     handleItemChange(e) {
         const { id } = e.currentTarget.dataset;

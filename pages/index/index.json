@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "searchInput": "../../components/searchIput/searchIput",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "navigationBarTitleText": "品优首页"
 }

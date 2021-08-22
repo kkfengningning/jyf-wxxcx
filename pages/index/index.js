@@ -1,5 +1,6 @@
 // 0 引入 用来发送请求的 方法 一定要把路径补全
 import { request } from "../../request/index.js";
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
     data: {
         // 轮播图数组
@@ -40,25 +41,15 @@ Page({
                 })
             })
     },
+    onShow: function () {
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+          this.getTabBar().setData({
+            selected: 0  //这个数字是当前页面在tabBar中list数组的索引
+          })
+        }
+      },
     // 获取 分类导航数据
     getCateList() {
-        wx.login({
-            success (res) {
-              if (res.code) {
-                  console.log('login',res);
-                //发起网络请求
-                wx.request({
-                  url: 'http://192.168.0.118:8080/wx/auth/loginByWechat',
-                  method:'POST',
-                  data: {
-                    code: res.code,
-                  }
-                })
-              } else {
-                console.log('登录失败！' + res.errMsg)
-              }
-            }
-          })
         request({ url: "/home/catitems" })
             .then(result => {
                let newResult = result;
