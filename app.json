@@ -13,7 +13,8 @@
     "pages/login/login",
     "pages/auth/auth",
     "pages/pay/pay",
-    "pages/classification/classification"
+    "pages/classification/classification",
+    "pages/registered/registered"
   ],
   "window": {
     "backgroundTextStyle": "light",

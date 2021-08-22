@@ -1,0 +1,67 @@
+<!--pages/registered/registered.wxml-->
+<van-cell-group>
+    <van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+  />
+  <van-cell title="类型" bindtap="typeChange" is-link value="{{type}}" />
+  <van-field
+    value="{{ name }}"
+    label="用户名"
+    placeholder="请输入用户名"
+    required
+  />
+  <van-field
+    value="{{ phone }}"
+    label="手机号"
+    placeholder="请输入手机号"
+    border="{{ true }}"
+    required
+  />
+  <van-field
+    value="{{ zuoji }}"
+    label="电话号码"
+    placeholder="请输入手机号"
+    border="{{ true }}"
+    required
+  />
+  <van-field
+    value="{{ weixin }}"
+    label="微信"
+    placeholder="请输入微信号"
+    required
+  />
+  <van-field
+    value="{{ area }}"
+    label="地区"
+    placeholder="请选择地区"
+    required
+  />
+  <van-field
+    value="{{ jyType }}"
+    label="经营模式"
+    placeholder="请选择经营模式"
+    required
+  />
+  <van-field
+    value="{{ jyType }}"
+    label="收获范围"
+    placeholder="请选择经营模式"
+    required
+  />
+  <van-field
+    value="{{ jyType }}"
+    label="收货类型"
+    placeholder="请选择收获类型"
+    required
+  />
+  <van-field
+    value="{{ jyType }}"
+    label="收货方式"
+    placeholder="请选择收货方式"
+    required
+  />
+  <hf_editor width="100%" height="600rpx" insertPicture="{{true}}" placeholder="编写文章..." bind:Content="getHtml" bind:insertImage="insertImage" id="hf_editor"/>
+</van-cell-group>

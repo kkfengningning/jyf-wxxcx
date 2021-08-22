@@ -68,10 +68,9 @@ Component({
               },
               success (res) {
                 console.log('res',res);
-                if(res.statusCode == 200 && res.data.code == 0){
-                  this.globalData.hasLogin = true;
-                  this.globalData.token=res.data.result.token;
-                }
+                wx.navigateTo({
+                  url: '/pages/registered/registered',
+              })
               }
             })
             }
