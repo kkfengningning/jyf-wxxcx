@@ -5,7 +5,8 @@
     "van-action-sheet": "@vant/weapp/action-sheet/index",
     "van-cell": "@vant/weapp/cell/index",
     "hf_editor": "../../components/editor/editor",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-uploader": "@vant/weapp/uploader/index"
   },
   "navigationBarTitleText": "用户注册"
 }

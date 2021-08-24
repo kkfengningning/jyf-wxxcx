@@ -9,17 +9,20 @@ Page({
     type:'',
     value: '',
     mobilePhone: '',
-    name: '',
+    username: '',
     show:false,
     jymsshow:false,
     shfwshow:false,
     receivingRange:'',
     receivingMethod:'',
+    receivingType:'',
     receivingRange:'',
     html: '',
     telephoneNumber: '',
     wechatNumber: '',
     managementModel:'',
+    fileList: [],
+    customItem: '全部',
     actions: [
       {
         name: '个人',
@@ -128,6 +131,29 @@ Page({
       managementModel: event.detail.name
     })
   },
+  deletRead(){
+    this.setData({ fileList : [] });
+  },
+  afterRead(event) {
+    const { file } = event.detail;
+    let that = this;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    console.log('file',file,file.url);
+    wx.uploadFile({
+      url: 'http://192.168.0.118:8080/wx/file/imageUpload',// 仅为示例，非真实的接口地址
+      filePath: file.url,
+      name: 'file',
+      header: {
+        'X-CR-Token': app.globalData.token
+      },
+      success(res) {
+        // 上传完成需要更新 fileList
+        const { fileList = [] } = that.data;
+        fileList.push({ ...file, url: JSON.parse(res.data).result.path });
+        that.setData({ fileList });
+      },
+    });
+  },
   onshfwSelect(event) {
     console.log(event.detail);
     this.setData({
@@ -161,6 +187,17 @@ Page({
       shfwshow: true
     })
   },
+  // getPhoneNumber (e) {
+  //   console.log(e.detail.errMsg)
+  //   console.log(e.detail.iv)
+  //   this.setData({
+  //     mobilePhone: e.detail.errMsg
+  //   })
+  //   // this.setData({
+  //   //   mobilePhone: 2222
+  //   // })
+  //   console.log(e.detail.encryptedData)
+  // },
   shfsChange(event) {
     this.setData({
       shfsshow: true
@@ -175,6 +212,49 @@ Page({
       region: e.detail.value
     })
   },
+  submit: function () {
+    console.log('name',this.data.type);
+    let params={
+      type:this.data.type,
+      name:this.data.username,
+      mobilePhone:this.data.mobilePhone,
+      telephoneNumber:this.data.telephoneNumber,
+      region:this.data.region,
+      managementModel:this.data.managementModel,
+      receivingRange:this.data.receivingRange,
+      receivingMethod:this.data.receivingMethod,
+      introduce:this.data.html,
+      logoId:this.data.fileList[0]?this.data.fileList[0].url:null
+    }
+    wx.request({
+      url: 'http://192.168.0.118:8080/wx/user/update',
+      method:'POST',
+      header: {
+        'X-CR-Token': app.globalData.token
+      },
+      data: params,
+      success (res) {
+        console.log('res',res);
+        app.globalData.hasLogin = true;
+      }
+    })
+  },
+  jy: function () {
+    return true;
+    if(!type || !name || !name || !mobilePhone || !telephoneNumber || !region || !managementModel|| !receivingRange || !receivingMethod){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  // jy(){
+  //   if(!type || !name || !name || !mobilePhone || !telephoneNumber || !region || !managementModel|| !receivingRange || !receivingMethod){
+  //     return true;
+  //   } esle {
+  //     return false;
+  //   }
+    
+  // },
   insertImage(){ //图片上传插入示例
     wx.chooseImage({
       count: 1,

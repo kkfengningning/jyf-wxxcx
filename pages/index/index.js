@@ -10,7 +10,8 @@ Page({
         // 楼层数据
         floorList: [],
         //分类数据
-        catesList: []
+        catesList: [],
+        show:false
     },
     // 页面开始加载 就会触发
     onLoad: function(options) {
