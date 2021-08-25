@@ -113,3 +113,6 @@ page {
   background-color: #fff;
   padding: 20rpx ;
 }
+.order_name{
+  font-size: 30rpx;
+}

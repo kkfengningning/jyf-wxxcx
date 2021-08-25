@@ -14,7 +14,7 @@ Component({
         "selectedIconPath": "/icons/home-o.png"
       },
       {
-        "pagePath": "/pages/category/category",
+        "pagePath": "/pages/classification/classification",
         "text": "分类",
         "iconPath": "/icons/category.png",
         "selectedIconPath": "/icons/category-o.png"
@@ -51,7 +51,7 @@ Component({
           selected: data.index
         })
       } else {
-        console.log(222)
+        console.log(222,app.globalData.hasLogin);
         // this.setData({
         //   show: true
         // })

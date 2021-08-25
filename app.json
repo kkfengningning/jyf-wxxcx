@@ -18,7 +18,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#eb4450",
+    "navigationBarBackgroundColor": "#2FCA71",
     "navigationBarTitleText": "品优购",
     "navigationBarTextStyle": "white"
   },
@@ -38,7 +38,7 @@
         "selectedIconPath": "./icons/home-o.png"
       },
       {
-        "pagePath": "pages/category/category",
+        "pagePath": "pages/classification/classification",
         "text": "分类",
         "iconPath": "./icons/category.png",
         "selectedIconPath": "./icons/category-o.png"

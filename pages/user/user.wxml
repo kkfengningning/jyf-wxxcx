@@ -7,12 +7,13 @@
     </view>
   </view>
   <view class="user_login" wx:else>
+    <image class="info_icon" src="{{userInfo.avatarUrl}}" />
     <navigator url="/pages/login/login">登陆</navigator>
   </view>
 </view>
 <view class="user_content">
   <view class="user_main">
-    <view class="main_his_wrap">
+    <!-- <view class="main_his_wrap">
       <navigator url="">
         <view class="his_num">0</view>
         <view class="his_name">收藏的店铺</view>
@@ -29,25 +30,25 @@
         <view class="his_num">0</view>
         <view class="his_name">我的足迹</view>
       </navigator>
-    </view>
+    </view> -->
     <view class="mian_order_wrap">
-      <view class="order_title">我的订单</view>
+      <view class="order_title">我的服务</view>
       <view class="order_content">
         <navigator url="/pages/order/order?type=1">
           <view class="iconfont icon-ding_dan"></view>
-          <view class="order_name">全部订单</view>
+          <view class="order_name">供求管理</view>
         </navigator>
         <navigator url="/pages/order/order?type=2">
           <view class="iconfont icon-fukuantongzhi"></view>
-          <view class="order_name">待付款</view>
+          <view class="order_name">发布供求</view>
         </navigator>
         <navigator url="/pages/order/order?type=3">
           <view class="iconfont icon-receipt-address"></view>
-          <view class="order_name">待收货</view>
+          <view class="order_name">平台电话</view>
         </navigator>
         <navigator>
           <view class="iconfont icon-tuihuotuikuan_dianpu"></view>
-          <view class="order_name">退款/退货</view>
+          <view class="order_name">在线客服</view>
         </navigator>
       </view>
     </view>

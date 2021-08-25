@@ -18,7 +18,7 @@ navigator {
 /* 主题颜色 */
 
 page {
-    --themeColor: #eb4450
+    --themeColor: #2FCA71
 }
 
 image {

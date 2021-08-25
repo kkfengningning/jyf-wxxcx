@@ -236,6 +236,9 @@ Page({
       success (res) {
         console.log('res',res);
         app.globalData.hasLogin = true;
+        wx.navigateTo({
+          url: '/pages/index/index',
+        })
       }
     })
   },
