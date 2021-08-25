@@ -1,7 +1,9 @@
 {
     "usingComponents": {
         "searchInput": "../../components/searchIput/searchIput",
-        "Tabs": "../../components/Tabs/Tabs"
+        "Tabs": "../../components/Tabs/Tabs",
+        "van-image": "@vant/weapp/image/index",
+        "van-button": "@vant/weapp/button/index"
     },
-    "navigationBarTitleText": "订单列表"
+    "navigationBarTitleText": "供求管理"
 }

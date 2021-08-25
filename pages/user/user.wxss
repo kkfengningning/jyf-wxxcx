@@ -2,15 +2,12 @@ page {
   background-color: #edece8;
 }
 .user_info {
-  height: 70vw;
+  height: 270rpx;
   overflow: hidden;
+  background-color: var(--themeColor);
 }
 .user_info .user_info_wrap {
   position: relative;
-}
-.user_info .user_info_wrap .user_bgc {
-  height: 70vw;
-  filter: blur(10rpx);
 }
 .user_info .user_info_wrap .info {
   position: absolute;
@@ -18,34 +15,26 @@ page {
   transform: translateX(-50%);
   top: 80rpx;
 }
-.user_info .user_info_wrap .info .info_icon {
+.user_info  .info_icon {
   height: 170rpx;
   width: 170rpx;
   border-radius: 50%;
+  vertical-align: middle;
 }
-.user_info .user_info_wrap .info .info_name {
-  text-align: center;
-  margin-top: 20rpx;
-  color: #fff;
-  font-size: 38rpx;
-  font-weight: bold;
+.user_info  .info_name {
+  font-size: 36rpx;
+  font-family: PingFang;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 170rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
 }
 .user_info .user_login {
   position: relative;
-  height: 70vw;
+  margin-top: 70rpx;
+  margin-left: 70rpx;
   background-color: var(--themeColor);
-}
-.user_info .user_login navigator {
-  position: absolute;
-  padding: 20rpx 40rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 120rpx;
-  border: 6rpx solid #fff;
-  border-radius: 10rpx;
-  text-align: center;
-  color: #fff;
-  font-weight: bold;
 }
 .user_content {
   position: relative;
@@ -96,23 +85,28 @@ page {
   background-color: #fff;
   padding: 20rpx ;
 }
-.user_content .user_main .main_info_wrap {
-  margin-top: 30rpx;
+.main_address_header{
+  padding: 20rpx;
+  border-bottom: 2rpx solid #edece8;
+}
+.addressItem{
+  border-bottom-right-radius:10px;
+  border-bottom-left-radius:10px;
+  padding: 20rpx;
+  background-color: #fafafa;
+}
+.addressItemHeader{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  background: #1DD798;
+  padding: 10rpx 20rpx;
+}
+.addresslistItem{
+  margin:20rpx;
+}
+.item-card{
   background-color: #fff;
 }
-.user_content .user_main .main_info_wrap .app_info_item {
-  padding: 20rpx ;
-  border-bottom: 1rpx solid #ccc;
-}
-.user_content .user_main .main_info_wrap .app_info_contact {
-  display: flex;
-  justify-content: space-between;
-}
-.user_content .user_main .main_recommend_wrap {
-  margin-top: 30rpx;
-  background-color: #fff;
-  padding: 20rpx ;
-}
-.order_name{
-  font-size: 30rpx;
+.zdButton{
+  margin-right: 20rpx;
 }

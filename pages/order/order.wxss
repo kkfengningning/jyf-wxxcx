@@ -8,14 +8,19 @@
   color: #666;
 }
 .order_item .order_no_wrap {
-  display: flex;
-  justify-content: space-between;
-  padding: 10rpx 0;
+  padding: 20rpx 20rpx;
+}
+.order_item text{
+  vertical-align: top;
+  margin-left: 20rpx;
+  font-size: 40rpx;
 }
 .order_item .order_price_wrap {
-  display: flex;
-  justify-content: space-between;
-  padding: 10rpx 0;
+  padding: 20rpx 20rpx;
+  text-align: right;
+}
+.zdButton{
+  margin-right: 10rpx;
 }
 .order_item .order_price_wrap .order_price_value {
   color: var(--themeColor);

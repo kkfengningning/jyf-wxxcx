@@ -1,6 +1,7 @@
 <view class="title">
   <view class="{{item.isActive ? 'active' : ''}}" wx:for="{{Tabs}}" wx:key="id" bindtap="tabsTap" data-id="{{item.id}}">
-    {{item.name}}
+    {{item.name}} 
+    {{item.num}} 
   </view>
 </view>
 <view class="content">

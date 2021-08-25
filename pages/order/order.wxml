@@ -1,16 +1,30 @@
 <Tabs Tabs="{{Tabs}}" bindtabsChange="tabsItemChange">
-  <view class="order_item" wx:for="{{orders}}" wx:key="index">
+  <view class="order_item" wx:for="{{orders_o}}" wx:key="index" wx:if="{{Tabs[0].isActive===true}}">
     <view class="order_no_wrap">
-      <view class="order_no">订单编号</view>
-      <view class="order_no_value">{{item.order_number}}</view>
+      <van-image   
+      src="http://192.168.0.118:8080/images/2021/08/22/11312400f8fc405091c22066e6106c9d.jpg"
+        width="50"
+        height="50">
+      </van-image>
+      <text>大量旧衣服</text>
     </view>
     <view class="order_price_wrap">
-      <view class="order_price">订单价格</view>
-      <view class="order_price_value">¥{{item.order_price}}</view>
+      <van-button custom-class="zdButton" round size="small">查看</van-button>
+      <van-button custom-class="zdButton"  round size="small">下架</van-button>
+      <van-button custom-class="zdButton" round size="small">修改</van-button>
     </view>
-    <view class="order_time_wrap">
-      <view class="order_time">下单日期</view>
-      <view class="order_time_value">{{item.create_time_cn}}</view>
+  </view>
+  <view class="order_item" wx:for="{{orders_i}}" wx:key="index" wx:if="{{Tabs[1].isActive===true}}">
+    <view class="order_no_wrap">
+      <van-image   
+      src="http://192.168.0.118:8080/images/2021/08/22/11312400f8fc405091c22066e6106c9d.jpg"
+        width="50"
+        height="50">
+      </van-image>
+      <text>大量lalla</text>
+    </view>
+    <view class="order_price_wrap">
+      <van-button custom-class="zdButton" round size="small">上架</van-button>
     </view>
   </view>
 </Tabs>

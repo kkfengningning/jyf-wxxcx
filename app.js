@@ -26,6 +26,7 @@ App({
               if(res.statusCode == 200 && res.data.code == 0){
                 that.globalData.hasLogin = true;
                 that.globalData.token=res.data.result.token;
+                that.globalData.userInfo=res.data.result.userInfo;
               } else {
                 that.globalData.token=res.data.result.token;
               }

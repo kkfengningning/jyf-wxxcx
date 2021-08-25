@@ -6,69 +6,57 @@ Page({
      * 页面的初始数据
      */
     data: {
-        orders: [{
+        orders_o: [{
             "order_number": "HMDD20190802000000000428",
-            "order_price": 13999,
+            "order_price": 11,
             "create_time": 1564731518
         }, {
             "order_number": "HMDD20190802000000000428",
-            "order_price": 13999,
+            "order_price": 111,
             "create_time": 1564731518
         }, {
             "order_number": "HMDD20190802000000000428",
-            "order_price": 13999,
+            "order_price": 1111,
             "create_time": 1564731518
         }, {
             "order_number": "HMDD20190802000000000428",
-            "order_price": 13999,
+            "order_price": 1111,
+            "create_time": 1564731518
+        }],
+        orders_i: [{
+            "order_number": "HMDD20190802000000000428",
+            "order_price": 22,
+            "create_time": 1564731518
+        }, {
+            "order_number": "HMDD20190802000000000428",
+            "order_price": 2222,
+            "create_time": 1564731518
+        }, {
+            "order_number": "HMDD20190802000000000428",
+            "order_price": 2222,
+            "create_time": 1564731518
+        }, {
+            "order_number": "HMDD20190802000000000428",
+            "order_price": 2222,
             "create_time": 1564731518
         }],
         //Tabs数据
         Tabs: [{
             id: 0,
-            name: '全部',
-            isActive: true
+            name: '已发布',
+            isActive: true,
+            num:11
         }, {
             id: 1,
-            name: '待付款',
-            isActive: false
-        }, {
-            id: 2,
-            name: '待发货',
-            isActive: false
-        }, {
-            id: 3,
-            name: '退款/退货',
-            isActive: false
+            name: '已下架',
+            isActive: false,
+            num:22
         }]
     },
     onShow(options) {
         //判断是否登陆
-        const token = wx.getStorageSync('token')
-        if (!token) {
-            wx.navigateTo({
-                url: '/pages/auth/auth',
-            });
-            return;
-        }
-
-        let pages = getCurrentPages();
-        let { type } = pages[pages.length - 1].options;
-        this.getOrderList(type)
     },
     //获取订单方法
-    async getOrderList(type) {
-        // const res = await request({ url: '/my/orders/all' }, { data: type })
-        // this.setData({
-        //     orders: res.orders.map(v => ({...v, create_time_cn: (new Date(v.create_time * 1000).toLocaleString()) }))
-        // })
-        //const res = await request({ url: '/my/orders/all' }, { data: type })
-        let orders = this.data.orders;
-        let newOrders = orders.map(v => ({...v, create_time_cn: (new Date(v.create_time * 1000).toLocaleString()) }))
-        this.setData({
-            orders: newOrders
-        })
-    },
     //切换Tab栏
     tabsItemChange(e) {
         const id = e.detail.id;
