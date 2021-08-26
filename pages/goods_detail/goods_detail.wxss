@@ -20,14 +20,50 @@ page {
 .detail_info .info_detail {
   display: flex;
 }
+.detail_xinxi {
+  border-bottom: 8rpx solid #ccc;
+  padding-bottom: 20rpx;
+}
 .detail_info .info_detail .info_name {
-  flex: 5;
-  font-size: 26rpx;
-  color: #666;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #000000;
+  line-height: 46rpx;
+}
+.xinxi_price{
+  padding-left: 20rpx;
+  padding-top: 15rpx;
+  font-size: 27rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #969696;
+}
+.xinxi_num{
+  color: #000000;
+}
+.detail_tel{
+  border-bottom: 8rpx solid #ccc;
+}
+.tel_header{
+  padding-left: 20rpx;
+  padding-top: 15rpx;
+  font-size: 33rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #969696;
+}
+.tel_main{
+  padding-left: 20rpx;
+  padding-top: 15rpx;
+  font-size: 33rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #2C2C2C;
+}
+.zhiifu{
+  padding: 20rpx;
 }
 .detail_info .info_detail .info_collect {
   flex: 1;

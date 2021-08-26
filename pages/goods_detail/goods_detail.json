@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
-    "navigationBarTitleText": "商品详情"
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index"
+    },
+    "navigationBarTitleText": "详情"
 }

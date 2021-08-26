@@ -8,37 +8,61 @@
 </view>
 <!-- 详情 -->
 <view class="detail_info">
-  <view class="info_price">¥{{goodInfo.goods_price}}</view>
   <view class="info_detail">
-    <view class="info_name">{{goodInfo.goods_name}}</view>
-    <view class="info_collect" bindtap="collectHandle">
-      <text class="iconfont {{isCollect?'icon-shoucang1':'icon-shoucang'}}"></text>
-      <view class="collect_text">收藏</view>
-    </view>
+    <view class="info_name">AAA厂家收衣服</view>
+  </view>
+</view>
+<view class="detail_xinxi">
+  <view class="xinxi_price">
+    <text class="xinxi_title">类型：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+  <view class="xinxi_price">
+    <text class="xinxi_title">价格：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+  <view class="xinxi_price">
+    <text  class="xinxi_title">最小订货量：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+  <view class="xinxi_price">
+    <text  class="xinxi_title">所在地区：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+  <view class="xinxi_price">
+    <text  class="xinxi_title">收获范围：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+  <view class="xinxi_price">
+    <text  class="xinxi_title">收获类型：</text>
+    <text class="xinxi_num">未填</text>
+  </view>
+</view>
+<view class="detail_tel">
+  <view  class="tel_header">联系方式</view>
+  <view  class="tel_main">查看联系方式需要开通年费会员需支付100元</view>
+  <view class="zhiifu">
+    <van-button  type="primary" size="large">立即支付</van-button>
+  </view>
+</view>
+<view class="detail_tel">
+  <view  class="tel_header">联系方式</view>
+  <view  class="tel_main">您当前可以免费2次查看联系方式</view>
+  <view class="zhiifu">
+    <van-button  type="primary" size="large">立即支付</van-button>
+  </view>
+</view>
+<view class="detail_tel">
+  <view  class="tel_header">联系方式</view>
+  <view  class="tel_main">您当前可以免费2次查看联系方式</view>
+  <view class="zhiifu">
+    <van-button  type="primary" size="large">立即支付</van-button>
   </view>
 </view>
 <view class="detail_more">
-  <view class="more_title">图文详情</view>
+  <view class="more_title">产品详情</view>
   <view class="more_image">
     <rich-text class="" nodes="{{goodInfo.goods_introduce}}"></rich-text>
   </view>
 </view>
 <!-- 底部工具栏 -->
-<view class="btm_tool">
-  <view class="tool_item">
-    <view class="iconfont icon-kefu"></view>
-    <view>客服</view>
-    <button open-type="contact"></button>
-  </view>
-  <view class="tool_item">
-    <view class="iconfont icon-yixianshi-"></view>
-    <view>分享</view>
-    <button open-type="share"></button>
-  </view>
-  <navigator open-type="switchTab" url="/pages/cart/cart" class="tool_item">
-    <view class="iconfont icon-gouwuche"></view>
-    <view>购物车</view>
-  </navigator>
-  <view class="tool_item btn_cart " bindtap="handleCartAdd">加入购物车</view>
-  <view class="tool_item btn_buy">立即购买</view>
-</view>
