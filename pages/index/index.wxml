@@ -1,6 +1,7 @@
 <view class="pyg_index">
+ <!-- 搜索框 -->
+ <searchInput></searchInput>
   <!-- 搜索框 -->
-  <!-- <searchInput></searchInput> -->
   <!-- 轮播图 -->
   <view class="index_swiper">
     <swiper indicator-dots autoplay circular>
@@ -13,7 +14,7 @@
   </view>
   <!-- 分类 -->
   <view class="index_cate">
-    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/classification/classification">
+    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/tel_detail/tel_detail?type=3">
       <image src="{{item.image_src}}" mode="widthFix" />
       <view class="index_cate_title">小白哦提</view>
     </navigator>

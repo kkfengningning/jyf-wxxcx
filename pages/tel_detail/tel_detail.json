@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+      "van-button": "@vant/weapp/button/index",
+      "van-icon": "@vant/weapp/icon/index",
+      "van-image": "@vant/weapp/image/index"
+  },
+  "navigationBarTitleText": "通讯录详情"
+}

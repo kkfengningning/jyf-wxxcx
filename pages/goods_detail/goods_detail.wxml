@@ -1,4 +1,5 @@
 <!-- 轮播图 -->
+<searchInput></searchInput>
 <view class="detail_swiper">
   <swiper autoplay indicator-dots circular>
     <swiper-item wx:for="{{goodInfo.pics}}" wx:key="pics_id">
@@ -53,10 +54,29 @@
   </view>
 </view>
 <view class="detail_tel">
-  <view  class="tel_header">联系方式</view>
-  <view  class="tel_main">您当前可以免费2次查看联系方式</view>
-  <view class="zhiifu">
-    <van-button  type="primary" size="large">立即支付</van-button>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="friends" />
+   <text class="tel_item_nam">姓名：02048828998</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="phone" />
+   <text class="tel_item_nam">电话：02048828998</text>
+   <van-icon class="tel-right" name="phone-o"  color="#1989fa" />
+  </view>
+  <view  class="tel_item">
+    <van-icon  color="#818181" name="phone" />
+   <text class="tel_item_nam">手机：02048828998</text>
+   <van-icon  class="tel-right" name="phone-o"  color="#1989fa" />
+  </view>
+  <view  class="tel_item">
+    <van-icon  color="#818181" name="chat" />
+   <text class="tel_item_nam">微信：02048828998</text>
+   <text  class="tel-right-text">复制</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="map-marked" />
+   <text class="tel_item_nam">地址：中国辽宁省沈阳市浑南区全运四东路</text>
+   <text  class="tel-right-text">复制</text>
   </view>
 </view>
 <view class="detail_more">

@@ -1,4 +1,7 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "van-action-sheet": "@vant/weapp/action-sheet/index",
+        "van-cell": "@vant/weapp/cell/index"
+    },
     "navigationBarTitleText": "商品搜索"
 }

@@ -7,6 +7,15 @@ Page({
      */
     data: {
         //商品列表
+        type:'供应',
+        actions: [
+            {
+              name: '供应',
+            },
+            {
+              name: '通讯录',
+            }
+          ],
         goods: [],
         //按钮的显示
         btnShow: false,
@@ -47,6 +56,15 @@ Page({
             goods
         })
     },
+    onClose() {
+        this.setData({ show: false });
+      },
+    onSelect(event) {
+    console.log(event.detail);
+    this.setData({
+        type: event.detail.name
+    })
+    },
     //点击取消按钮
     handleCancel() {
         this.setData({
@@ -54,5 +72,10 @@ Page({
             btnShow: false,
             goods: []
         })
-    }
+    },
+    typeChange(event) {
+        this.setData({
+          show: true
+        })
+    },
 })

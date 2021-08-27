@@ -15,7 +15,8 @@
     "pages/pay/pay",
     "pages/classification/classification",
     "pages/registered/registered",
-    "pages/supply/supply"
+    "pages/supply/supply",
+    "pages/tel_detail/tel_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

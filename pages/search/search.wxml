@@ -1,3 +1,12 @@
+<view class="search_type">
+  <van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+   />
+  <van-cell title="类型" bindtap="typeChange" is-link value="{{type}}" />
+</view>
 <view class="search_input">
   <input placeholder="请输入搜索商品名称" value="{{inputValue}}" bindinput="inputChange" />
   <button size="mini" hidden="{{!btnShow}}" bindtap="handleCancel">取消</button>

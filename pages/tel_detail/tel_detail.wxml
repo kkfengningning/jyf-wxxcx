@@ -1,0 +1,69 @@
+
+<!-- 详情 -->
+<view class="detail_xinxi">
+<view class="txl_img">
+  <van-image width="100%" height="100%" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+</view>
+ <view class="txl_xinxi">通讯录信息</view>
+ <view>
+  <view  class="tel_item">
+    <van-icon color="#818181"  name="clock" />
+   <text class="tel_item_nam">收货类型;夏装，旧手机</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="send-gift" />
+   <text class="tel_item_nam">收货方式：上门</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="map-marked" />
+   <text class="tel_item_nam">地区：广东省广州市</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="map-marked" />
+   <text class="tel_item_nam">收货范围：全国</text>
+  </view>
+  <view  class="tel_item">
+    <van-icon color="#818181" name="point-gift" />
+   <text class="tel_item_nam">经营模式：个体</text>
+  </view>
+</view>
+
+</view>
+<view class="detail_tel">
+  <view  class="tel_header">联系方式</view>
+  <view  class="tel_main">查看联系方式需要开通年费会员需支付100元</view>
+  <view class="zhiifu">
+    <van-button  type="primary" size="large">立即支付</van-button>
+  </view>
+</view>
+<view class="detail_tel">
+  <view  class="tel_header">联系方式</view>
+  <view  class="tel_main">您当前可以免费2次查看联系方式</view>
+  <view class="zhiifu">
+    <van-button  type="primary" size="large">立即支付</van-button>
+  </view>
+</view>
+<view class="detail_tel">
+  <view  class="tel_item">
+    <van-icon color="#818181" name="phone" />
+   <text class="tel_item_nam">电话：02048828998</text>
+   <van-icon class="tel-right" name="phone-o"  color="#1989fa" />
+  </view>
+  <view  class="tel_item">
+    <van-icon  color="#818181" name="phone" />
+   <text class="tel_item_nam">手机：02048828998</text>
+   <van-icon  class="tel-right" name="phone-o"  color="#1989fa" />
+  </view>
+  <view  class="tel_item">
+    <van-icon  color="#818181" name="chat" />
+   <text class="tel_item_nam">微信：02048828998</text>
+   <text  class="tel-right-text">复制</text>
+  </view>
+</view>
+<view class="detail_more">
+  <view class="more_title">产品详情</view>
+  <view class="more_image">
+    <rich-text class="" nodes="{{goodInfo.goods_introduce}}"></rich-text>
+  </view>
+</view>
+<!-- 底部工具栏 -->
