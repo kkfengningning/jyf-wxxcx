@@ -1,0 +1,6 @@
+/* pages/release/release.wxss *//* pages/registered/registered.wxss */
+.submit_box{
+  margin-top: 100rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}

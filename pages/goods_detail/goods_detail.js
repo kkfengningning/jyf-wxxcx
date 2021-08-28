@@ -1,5 +1,7 @@
 import regeneratorRuntime from '../../lib/runtime/runtime';
 const { request } = require('../../request/index.js')
+// import { wxRequest } from ".../../request/wxRequest.js";
+import { wxRequest } from "../../request/wxRequest.js";
 Page({
 
     /**
@@ -31,24 +33,28 @@ Page({
         })
 
     },
-    //添加购物车
-    handleCartAdd() {
-        let cart = wx.getStorageSync("cart") || [];
-        let index = cart.findIndex(v => v.goods_id === this.GoodInfo.goods_id)
-        if (index === -1) {
-            this.GoodInfo.num = 1
-            this.GoodInfo.checked = true
-            cart.push(this.GoodInfo)
-        } else {
-            cart[index].num++
-        }
-        wx.setStorageSync('cart', cart)
-        wx.showToast({
-            title: '已经加入购物车',
-            icon: 'success',
-            // true 防止用户 手抖 疯狂点击按钮 
-            mask: true
-        })
+    getGoodsInfo(id){
+        wxRequest('POST','/wx/supplyDemand/detail',{
+            id
+          }).then(res => {
+              console.log(res.data.result);
+              this.setData({
+                goodInfo: res.data.result,
+            })
+            //请求成功
+            // if(res.statusCode == 200 && res.data.code == 0){
+            //   that.globalData.hasLogin = true;
+            //   that.globalData.token=res.data.result.token;
+            //   wx.setStorageSync('token', res.data.result.token)
+            //   that.globalData.userInfo=res.data.result.userInfo;
+            // } else {
+            //   that.globalData.token=res.data.result.token;
+            // }
+         })
+         .catch(err => {
+            //请求失败
+            console.log('登录失败11！' + err)
+         })
     },
     //点击收藏
     collectHandle() {
@@ -73,6 +79,7 @@ Page({
     onShow: function(options) {
         let pages = getCurrentPages();
         let goods_id = pages[pages.length - 1].options.goods_id
-        this.getGoodInfo(goods_id)
+        // this.getGoodInfo(goods_id)
+        this.getGoodsInfo(goods_id*1);
     }
 })

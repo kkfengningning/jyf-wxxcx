@@ -1,5 +1,6 @@
 // 0 引入 用来发送请求的 方法 一定要把路径补全
 import { request } from "../../request/index.js";
+import { wxRequest } from "../../request/wxRequest.js";
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
     data: {
@@ -16,7 +17,7 @@ Page({
     // 页面开始加载 就会触发
     onLoad: function(options) {
         this.getSwiperList();
-        this.getCateList();
+        // this.getCateList();
         this.getFloorList();
     },
     // 获取 分类导航数据
@@ -31,16 +32,24 @@ Page({
     // },
     // 获取轮播图数据
     getSwiperList() {
-        request({ url: "/home/swiperdata" })
-            .then(result => {
-                result.forEach((v, i) => {
-                    console.log(v.navigator_url);
-                    result[i].navigator_url = v.navigator_url.replace('main', 'goods_detail')
-                })
+            wxRequest('POST','/wx/home/info',).then(res => {
+                //请求成功
+                if(res.statusCode == 200 && res.data.code == 0){
                 this.setData({
-                    swiperList: result.concat(result)
+                    swiperList: res.data.result.rotationList,
+                    catesList: res.data.result.classifyList
                 })
-            })
+                //   that.globalData.hasLogin = true;
+                //   that.globalData.token=res.data.result.token;
+                //   that.globalData.userInfo=res.data.result.userInfo;
+                } else {
+                //   that.globalData.token=res.data.result.token;
+                }
+             })
+             .catch(err => {
+                //请求失败
+                console.log('登录失败！' + err.errMsg)
+             })
     },
     onShow: function () {
         if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -50,16 +59,16 @@ Page({
         }
       },
     // 获取 分类导航数据
-    getCateList() {
-        request({ url: "/home/catitems" })
-            .then(result => {
-               let newResult = result;
-               newResult.push(result[0])
-                this.setData({
-                    catesList: newResult.concat(newResult)
-                })
-            })
-    },
+    // getCateList() {
+    //     request({ url: "/home/catitems" })
+    //         .then(result => {
+    //            let newResult = result;
+    //            newResult.push(result[0])
+    //             this.setData({
+    //                 catesList: newResult.concat(newResult)
+    //             })
+    //         })
+    // },
     // 获取 楼层数据
     getFloorList() {
         request({ url: "/home/floordata" })

@@ -16,7 +16,8 @@
     "pages/classification/classification",
     "pages/registered/registered",
     "pages/supply/supply",
-    "pages/tel_detail/tel_detail"
+    "pages/tel_detail/tel_detail",
+    "pages/release/release"
   ],
   "window": {
     "backgroundTextStyle": "light",

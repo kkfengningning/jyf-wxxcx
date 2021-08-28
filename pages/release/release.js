@@ -1,4 +1,5 @@
 // pages/registered/registered.js
+import { wxRequest } from "../../request/wxRequest.js";
 var app = getApp()
 Page({
 
@@ -8,27 +9,33 @@ Page({
   data: {
     type:'',
     value: '',
-    mobilePhone: '',
-    username: '',
+    minOrderQuantity:'',
+    price:'',
+    phone: '',
+    concatName: '',
     show:false,
     jymsshow:false,
     shfwshow:false,
-    receivingRange:'',
+    showType:false,
+    concatAddress:'',
+    title:'',
+    receivingSellRange:'',
     receivingMethod:'',
-    receivingType:'',
-    receivingRange:'',
+    receivingSellType:'',
     html: '',
-    telephoneNumber: '',
+    telephone: '',
+    classify:'',
     wechatNumber: '',
     managementModel:'',
     fileList: [],
     customItem: '全部',
+    classifyActions:[],
     actions: [
       {
-        name: '个人',
+        name: '供应',
       },
       {
-        name: '企业',
+        name: '求购',
       }
     ],
     jymsactions: [
@@ -76,7 +83,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wxRequest('POST','/wx/supplyDemand/classifies','').then(res => {
+      //请求成功
+      console.log(res)
+      let arr= [];
+      for(let i=0;i<res.data.result.length;i++){
+        arr.push({
+          name:res.data.result[i]
+        })
+      }
+      this.setData({ classifyActions: arr });
+   })
+   .catch(err => {
+      //请求失败
+      console.log('登录失败！' + res.errMsg)
+   })
   },
 
   /**
@@ -116,6 +137,9 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  onflClose() {
+    this.setData({ showType: false });
+  },
   onjymsClose() {
     this.setData({ jymsshow: false });
   },
@@ -131,8 +155,12 @@ Page({
       managementModel: event.detail.name
     })
   },
-  deletRead(){
-    this.setData({ fileList : [] });
+  deletRead(index){
+    console.log('index',index.detail.index,this.data.fileList);
+     let arr = this.data.fileList;
+     arr.splice(index.detail.index,1);
+     console.log(arr)
+    this.setData({ fileList : arr});
   },
   afterRead(event) {
     const { file } = event.detail;
@@ -149,7 +177,7 @@ Page({
       success(res) {
         // 上传完成需要更新 fileList
         const { fileList = [] } = that.data;
-        fileList.push({ ...file, url: JSON.parse(res.data).result.path, id: JSON.parse(res.data).result.id });
+        fileList.push({ ...file, url: JSON.parse(res.data).result });
         that.setData({ fileList });
       },
     });
@@ -157,7 +185,7 @@ Page({
   onshfwSelect(event) {
     console.log(event.detail);
     this.setData({
-      receivingRange: event.detail.name
+      receivingSellRange: event.detail.name
     })
   },
   onshfsSelect(event) {
@@ -167,14 +195,24 @@ Page({
     })
   },
   onSelect(event) {
-    console.log(event.detail);
     this.setData({
       type: event.detail.name
+    })
+  },
+  onSelectClassify(val) {
+    console.log(123,val);
+    this.setData({
+      classify: val.detail
     })
   },
   typeChange(event) {
     this.setData({
       show: true
+    })
+  },
+  typeflChange(event) {
+    this.setData({
+      showType: true
     })
   },
   jymsChange(event) {
@@ -204,7 +242,6 @@ Page({
     })
   },
   getHtml(e) {//从组件获取值
-    console.log(' e.detail.content.html', e.detail.content.html);
     this.setData({
       html: e.detail.content.html
     })
@@ -217,38 +254,60 @@ Page({
     })
   },
   submit: function () {
-    console.log('name',this.data.type);
-    console.log('logoId',this.data.fileList[0],this.data.fileList[0].id);
-    let params={
-      type:this.data.type,
-      name:this.data.username,
-      mobilePhone:this.data.mobilePhone,
-      telephoneNumber:this.data.telephoneNumber,
-      region:this.data.region,
-      managementModel:this.data.managementModel,
-      receivingRange:this.data.receivingRange,
-      receivingMethod:this.data.receivingMethod,
-      introduce:this.data.html,
-      logoId:this.data.fileList[0]?this.data.fileList[0].id:null
+    console.log('name',this.data.fileList);
+    let images = [];
+    for (let i=0;i<this.data.fileList.length;i++){
+      images.push(this.data.fileList[i].url.id);
     }
-    wx.request({
-      url: 'http://192.168.0.118:8080/wx/personalCenter/update',
-      method:'POST',
-      header: {
-        'X-CR-Token': app.globalData.token
+    let params={
+      title:this.data.title,
+      type:this.data.type,
+      minOrderQuantity:this.data.minOrderQuantity,
+      classify:this.data.classify,
+      price:this.data.price,
+      receivingSellType:this.data.receivingSellType, // 收获类型
+      phone:this.data.phone,
+      images,
+      concat:{
+        concatName:this.data.concatName,
+        telephone:this.data.telephone,
+        phone:this.data.phone,
+        wechatNumber:this.data.phone,
+        concatAddress:this.data.concatAddress,
       },
-      data: params,
-      success (res) {
-        console.log('res',res);
-        app.globalData.hasLogin = true;
-        // wx.navigateTo({
-        //   url: '/pages/index/index',
-        // })
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
-      }
+      province:this.data.region[0],
+      city:this.data.region[1],
+      // managementModel:this.data.managementModel,
+      receivingSellRange:this.data.receivingSellRange,
+      // receivingMethod:this.data.receivingMethod,
+      detail:this.data.html,
+      logoId:this.data.fileList[0]?this.data.fileList[0].url:null
+    }
+    wxRequest('POST','/wx/supplyDemand/add',params).then(res => {
+      //请求成功
+      wx.switchTab({
+        url: '/pages/user/user',
+      })
     })
+    .catch(err => {
+        //请求失败
+        console.log('登录失败！' + res.errMsg)
+    })
+    // wx.request({
+    //   url: 'http://192.168.0.118:8080/wx/user/update',
+    //   method:'POST',
+    //   header: {
+    //     'X-CR-Token': app.globalData.token
+    //   },
+    //   data: params,
+    //   success (res) {
+    //     console.log('res',res);
+    //     app.globalData.hasLogin = true;
+    //     wx.navigateTo({
+    //       url: '/pages/index/index',
+    //     })
+    //   }
+    // })
   },
   jy: function () {
     return true;
@@ -279,7 +338,7 @@ Page({
             'X-CR-Token': app.globalData.token
           },
           success: res => {
-            console.log('img',res,JSON.parse(res.data).result.path);
+            console.log('img',res);
             let imgUrl = JSON.parse(res.data).result.path;
             this.selectComponent('#hf_editor').insertSrc(imgUrl);//调用组件insertSrc方法
           }

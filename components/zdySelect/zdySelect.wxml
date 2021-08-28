@@ -1,0 +1,8 @@
+<!--components/zdySelect/zdySelect.wxml-->
+<van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+   />
+  <van-cell title="{{ label }}" bindtap="typeChange" is-link value="{{type}}" />

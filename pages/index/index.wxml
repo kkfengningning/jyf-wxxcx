@@ -6,17 +6,16 @@
   <view class="index_swiper">
     <swiper indicator-dots autoplay circular>
       <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
-        <navigator url="{{item.navigator_url}}">
-          <image src="{{item.image_src}}" mode="widthFix" />
-        </navigator>
+          <image src="{{item.url}}" mode="widthFix" />
       </swiper-item>
     </swiper>
   </view>
   <!-- 分类 -->
+  <!-- "{{item.navigator_url}}" -->
   <view class="index_cate">
     <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/tel_detail/tel_detail?type=3">
-      <image src="{{item.image_src}}" mode="widthFix" />
-      <view class="index_cate_title">小白哦提</view>
+      <image src="{{item.url}}" mode="widthFix" />
+      <view class="index_cate_title">{{item.name}}</view>
     </navigator>
   </view>
   <!-- 楼层区 -->

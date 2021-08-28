@@ -1,0 +1,100 @@
+
+<!--pages/release/release.wxml-->
+<van-cell-group>
+  <van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+   />
+  <van-cell title="信息类型" bindtap="typeChange" is-link value="{{type}}" />
+  <van-field
+    model:value="{{ title }}"
+    label="信息标题"
+    placeholder="请输入信息标题"
+  />
+  <zdySelect
+    actions="{{ classifyActions }}"
+    label="分类"
+    bindselectChoose="onSelectClassify"
+    type="{{classify}}"
+  />
+  <van-field
+    model:value="{{ price }}"
+    label="价格"
+    placeholder="请输入价格"
+  />
+  <van-field
+    model:value="{{ minOrderQuantity }}"
+    label="最小订货量"
+    placeholder="请输入最小订货量"
+  />
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <van-cell title="地区">
+      <view class="van-cell-text" >
+        {{region[0]}}，{{region[1]}}
+       </view>
+    </van-cell>
+  </picker>
+  <van-action-sheet
+    show="{{ shfwshow }}"
+    actions="{{ shfwactions }}"
+    bind:close="onshfwClose"
+    bind:select="onshfwSelect"
+   />
+  <van-cell title="收货范围" bindtap="shfwChange" is-link value="{{receivingSellRange}}" />
+  <van-field
+    model:value="{{ receivingSellType }}"
+    label="收货类型"
+    placeholder="请选择收获类型"
+  />
+  <van-cell title="相册图片"  />
+  <van-uploader deletable="{{ true }}" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deletRead" />
+  <van-cell title="产品介绍"  />
+  <hf_editor width="100%" height="600rpx" insertPicture="{{true}}" placeholder="编写文章..." bind:Content="getHtml" bind:insertImage="insertImage" id="hf_editor"/>
+  <van-cell-group>
+  <!-- <van-field
+  model:value="{{ mobilePhone }}"
+    center
+    clearable
+    label="手机号"
+    placeholder="请输入手机号"
+    border="{{ false }}"
+    use-button-slot
+  >
+    <button slot="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" size="mini">获取用户手机号</button>
+  </van-field> -->
+</van-cell-group>
+<van-cell title="联系方式"  />
+<van-field
+    model:value="{{ concatName }}"
+    label="姓名"
+    placeholder="请输入姓名"
+  />
+  <van-field
+  model:value="{{  telephone }}"
+    label="电话号码"
+    placeholder="请输入手机号"
+    border="{{ true }}"
+  />
+  <van-field
+  model:value="{{ phone }}"
+    label="手机号"
+    placeholder="请输入手机号"
+    border="{{ true }}"
+  />
+  <van-field
+    model:value="{{ wechatNumber }}"
+    label="微信"
+    placeholder="请输入微信号"
+  />
+  <van-field
+    model:value="{{ concatAddress }}"
+    label="地址"
+    placeholder="请输入地址"
+  />
+  <view  class="submit_box">
+    <van-button class="submit_butten"  bind:click="submit" size="normal" round type="primary">立即发布</van-button>
+  </view>
+
+</van-cell-group>

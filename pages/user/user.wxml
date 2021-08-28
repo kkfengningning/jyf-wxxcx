@@ -31,7 +31,7 @@
           <view class="iconfont icon-ding_dan"></view>
           <view class="order_name">供求管理</view>
         </navigator>
-        <navigator url="/pages/order/order?type=2">
+        <navigator url="/pages/release/release">
           <view class="iconfont icon-fukuantongzhi"></view>
           <view class="order_name">发布供求</view>
         </navigator>

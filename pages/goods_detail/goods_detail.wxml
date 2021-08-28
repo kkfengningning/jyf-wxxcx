@@ -2,8 +2,8 @@
 <searchInput></searchInput>
 <view class="detail_swiper">
   <swiper autoplay indicator-dots circular>
-    <swiper-item wx:for="{{goodInfo.pics}}" wx:key="pics_id">
-      <image mode="widthFix" src="{{item.pics_mid}}" />
+    <swiper-item wx:for="{{goodInfo.images}}" wx:key="pics_id">
+      <image mode="widthFix" src="{{item.path}}" />
     </swiper-item>
   </swiper>
 </view>
@@ -82,7 +82,7 @@
 <view class="detail_more">
   <view class="more_title">产品详情</view>
   <view class="more_image">
-    <rich-text class="" nodes="{{goodInfo.goods_introduce}}"></rich-text>
+    <rich-text class="" nodes="{{goodInfo.detail}}"></rich-text>
   </view>
 </view>
 <!-- 底部工具栏 -->
