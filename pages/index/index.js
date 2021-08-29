@@ -12,7 +12,8 @@ Page({
         floorList: [],
         //分类数据
         catesList: [],
-        show:false
+        show:false,
+        goodsList:[]
     },
     // 页面开始加载 就会触发
     onLoad: function(options) {
@@ -45,6 +46,16 @@ Page({
                 } else {
                 //   that.globalData.token=res.data.result.token;
                 }
+             })
+             .catch(err => {
+                //请求失败
+                console.log('登录失败！' + err.errMsg)
+             })
+             wxRequest('POST','/wx/home/recommendGood',).then(res => {
+                //请求成功
+                this.setData({
+                    goodsList: res.data.result.recommendGoods,
+                })
              })
              .catch(err => {
                 //请求失败

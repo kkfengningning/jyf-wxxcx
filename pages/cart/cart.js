@@ -1,4 +1,5 @@
 import areaList from './area';
+import { wxRequest } from "../../request/wxRequest.js";
 Page({
 
     /**
@@ -6,10 +7,10 @@ Page({
      */
     data: {
       areaList : areaList,
-      itemTitle: '地区'
-    },
-    onShow() {
-        //收货地址接收
+      itemTitle: '地区',
+      maiList:[],
+      pageNum: 1
+
     },
     //添加收货地址事件
     onShow: function () {
@@ -18,6 +19,7 @@ Page({
             selected: 2  //这个数字是当前页面在tabBar中list数组的索引
           })
         }
+        this.feachList()
       },
     //商品选择状态改变
     handleItemChange(e) {
@@ -25,13 +27,55 @@ Page({
     onChange(val) {
       console.log(val,'val');
     },
+    onReachBottom: function () {
+      this.setData({ 
+        pageNum: this.data.pageNum+1
+      });
+      this.feachList( 'more' );
+    },
     onConfirm(val) {
-      console.log(val,'val');
+      console.log(val,val.detail.values[0].name,val.detail.values[1].name);
+      
       this.selectComponent('#item').toggle();
+      this.setData({ 
+        province:val.detail.values[0].name,
+        city:val.detail.values[1].name,
+        pageNum: 1
+      });
+      this.feachList();
     },
     onClose() {
       this.selectComponent('#item').toggle();
     },
+    feachList(more){
+      console.log(122333);
+      wxRequest('POST','/wx/maiList/list',{
+        province:this.data.province,
+        city:this.data.city,
+        pageNum: this.data.pageNum
+      }).then(res => {
+        this.setData({ 
+          maiList:more?this.data.maiList.concat(res.data.result.mailList):res.data.result.mailList,
+              wenan:res.data.result.mailList.length > 0 ?'下拉加载更多' : '暂无数据'
+          });
+          //请求成功
+          // this.setData({ 
+          //     orders_o: res.data.result.on,
+          //     orders_i: res.data.result.off,
+          //     Tabs:[{
+          //         id: 0,
+          //         name: '已发布',
+          //         isActive: true,
+          //         num:res.data.result.on.length
+          //     }, {
+          //         id: 1,
+          //         name: '已下架',
+          //         isActive: false,
+          //         num:res.data.result.off.length
+          //     }]
+          // });
+       })
+  },
     // 全选按钮改变
     //数量改变
 

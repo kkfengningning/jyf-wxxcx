@@ -1,10 +1,15 @@
 {
+
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 40,
   "usingComponents": {
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "@vant/weapp/dropdown-item/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-button": "@vant/weapp/button/index",
-    "van-area": "@vant/weapp/area/index"
+    "van-image": "@vant/weapp/image/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

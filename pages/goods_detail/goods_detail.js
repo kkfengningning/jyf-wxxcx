@@ -11,7 +11,9 @@ Page({
         //详情数据
         goodInfo: {},
         //是否被保存
-        isCollect: false
+        isCollect: false,
+        isHy: 0,
+        tradeFree:0
     },
     GoodInfo: {},
     //获取详情数据
@@ -41,6 +43,17 @@ Page({
               this.setData({
                 goodInfo: res.data.result,
             })
+            if(res.data.result.isCurrentUser == 0 || res.data.result.memberStatus == 1){
+                this.setData({
+                    isHy: 1,
+                    tradeFree:res.data.result.tradeFree
+                })
+            } else {
+                this.setData({
+                    isHy: 0,
+                    tradeFree:res.data.result.tradeFree
+                })
+            }
             //请求成功
             // if(res.statusCode == 200 && res.data.code == 0){
             //   that.globalData.hasLogin = true;
@@ -72,6 +85,14 @@ Page({
         }
         wx.setStorageSync("collect", collect)
         this.setData({ isCollect })
+    },
+    copy(e) {
+        console.log(e.currentTarget.dataset.num)
+        wx.setClipboardData({  data: e.currentTarget.dataset.num });
+    },
+    call(e) {
+        console.log(e.currentTarget.dataset.num)
+        wx.makePhoneCall({  phoneNumber: e.currentTarget.dataset.num });
     },
     /**
      * 生命周期函数--监听页面加载

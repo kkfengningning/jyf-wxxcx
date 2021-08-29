@@ -10,73 +10,73 @@
 <!-- 详情 -->
 <view class="detail_info">
   <view class="info_detail">
-    <view class="info_name">AAA厂家收衣服</view>
+    <view class="info_name">{{goodInfo.title}}</view>
   </view>
 </view>
 <view class="detail_xinxi">
   <view class="xinxi_price">
     <text class="xinxi_title">类型：</text>
-    <text class="xinxi_num">未填</text>
+    <text class="xinxi_num">{{goodInfo.type}}</text>
   </view>
   <view class="xinxi_price">
     <text class="xinxi_title">价格：</text>
-    <text class="xinxi_num">未填</text>
+    <text class="xinxi_num">{{goodInfo.price}}</text>
   </view>
   <view class="xinxi_price">
     <text  class="xinxi_title">最小订货量：</text>
-    <text class="xinxi_num">未填</text>
+    <text class="xinxi_num">{{goodInfo.minOrderQuantity}}</text>
   </view>
   <view class="xinxi_price">
     <text  class="xinxi_title">所在地区：</text>
-    <text class="xinxi_num">未填</text>
+    <text class="xinxi_num">{{goodInfo.province}}{{goodInfo.city}}</text>
   </view>
   <view class="xinxi_price">
-    <text  class="xinxi_title">收获范围：</text>
-    <text class="xinxi_num">未填</text>
+    <text  class="xinxi_title">收货范围：</text>
+    <text class="xinxi_num">{{goodInfo.receivingSellRange}}</text>
   </view>
   <view class="xinxi_price">
-    <text  class="xinxi_title">收获类型：</text>
-    <text class="xinxi_num">未填</text>
+    <text  class="xinxi_title">收货类型：</text>
+    <text class="xinxi_num">{{goodInfo.receivingSellType}}</text>
   </view>
 </view>
-<view class="detail_tel">
+<view class="detail_tel" wx:if="{{isHy==0 && tradeFree==0}}">
   <view  class="tel_header">联系方式</view>
   <view  class="tel_main">查看联系方式需要开通年费会员需支付100元</view>
   <view class="zhiifu">
     <van-button  type="primary" size="large">立即支付</van-button>
   </view>
 </view>
-<view class="detail_tel">
+<view wx:if="{{isHy==0 && tradeFree>0}}" class="detail_tel">
   <view  class="tel_header">联系方式</view>
-  <view  class="tel_main">您当前可以免费2次查看联系方式</view>
+  <view  class="tel_main">您当前可以免费{{tradeFree}}次查看联系方式</view>
   <view class="zhiifu">
-    <van-button  type="primary" size="large">立即支付</van-button>
+    <van-button  type="primary" size="large">立即查看</van-button>
   </view>
 </view>
-<view class="detail_tel">
+<view class="detail_tel" wx:if="{{isHy==1}}">
   <view  class="tel_item">
     <van-icon color="#818181" name="friends" />
-   <text class="tel_item_nam">姓名：02048828998</text>
+   <text class="tel_item_nam">姓名：{{goodInfo.concat.concatName}}</text>
   </view>
   <view  class="tel_item">
     <van-icon color="#818181" name="phone" />
-   <text class="tel_item_nam">电话：02048828998</text>
-   <van-icon class="tel-right" name="phone-o"  color="#1989fa" />
+   <text class="tel_item_nam">电话：{{goodInfo.concat.telephone}}</text>
+   <van-icon  bindtap="call" data-num="{{goodInfo.concat.telephone}}"   class="tel-right" name="phone-o"  color="#1989fa" />
   </view>
   <view  class="tel_item">
     <van-icon  color="#818181" name="phone" />
-   <text class="tel_item_nam">手机：02048828998</text>
-   <van-icon  class="tel-right" name="phone-o"  color="#1989fa" />
+   <text class="tel_item_nam">手机：{{goodInfo.concat.phone}}</text>
+   <van-icon  bindtap="call" data-num="{{goodInfo.concat.phone}}"   class="tel-right" name="phone-o"  color="#1989fa" />
   </view>
   <view  class="tel_item">
     <van-icon  color="#818181" name="chat" />
-   <text class="tel_item_nam">微信：02048828998</text>
-   <text  class="tel-right-text">复制</text>
+   <text class="tel_item_nam">微信：{{goodInfo.concat.wechatNumber}}</text>
+   <text bindtap="copy" data-num="{{goodInfo.concat.wechatNumber}}"  class="tel-right-text">复制</text>
   </view>
   <view  class="tel_item">
     <van-icon color="#818181" name="map-marked" />
-   <text class="tel_item_nam">地址：中国辽宁省沈阳市浑南区全运四东路</text>
-   <text  class="tel-right-text">复制</text>
+   <text class="tel_item_nam">地址：{{goodInfo.concat.concatAddress}}</text>
+   <text bindtap="copy" data-num="{{goodInfo.concat.concatAddress}}"   class="tel-right-text">复制</text>
   </view>
 </view>
 <view class="detail_more">

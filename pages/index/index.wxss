@@ -33,8 +33,8 @@ swiper image {
   margin: 0 auto;
 }
 .index_floor {
-  overflow: hidden;
   padding-top: 44rpx;
+  padding-bottom: 115rpx;
 }
 .index_floor .floor_title {
   width: 100%;
@@ -57,7 +57,8 @@ swiper image {
   color: #FFFFFF;
 }
 .index_floor .floor_list {
-  padding:10rpx 20rpx 0 10rpx ;
+  padding:10rpx 20rpx 0rpx 10rpx ;
+  overflow: hidden;
 }
 .index_floor .floor_list navigator {
   float: left;

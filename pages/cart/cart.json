@@ -5,5 +5,7 @@
         "van-dropdown-item": "@vant/weapp/dropdown-item/index",
         "van-area": "@vant/weapp/area/index"
     },
-    "navigationBarTitleText": "通讯录"
+    "navigationBarTitleText": "通讯录",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 40
 }

@@ -6,26 +6,24 @@
   </van-dropdown-item>
 </van-dropdown-menu>
   <view class="addresslist">
-  <view class="addresslistItem">
+  <navigator class="addresslistItem" wx:for="{{maiList}}" wx:key="index" url="/pages/tel_detail/tel_detail?goods_id={{item.id}}">
     <view class="addressItemHeader">
      个人名片
     </view>
   <view class="addressItem">
     <van-card
      custom-class="item-card"
-      num="2"
-      tag="标签"
-      price="10.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="{{ imageURL }}"
+      tag="{{item.mailListRecommend == 1 ? '推荐' :''}}"
+      desc="{{item.type}}"
+      title="{{item.name}}"
+      thumb="{{ item.logoUrl }}"
     >
       <view slot="footer">
-        <van-button size="mini">按钮</van-button>
-        <van-button size="mini">按钮</van-button>
+        {{item.receivingType}}
       </view>
     </van-card>
   </view>
-  </view>
+  </navigator>
   </view>
 </view>
+<view class="footerBox"></view>

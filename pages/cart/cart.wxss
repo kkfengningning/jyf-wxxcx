@@ -17,3 +17,6 @@
 .item-card{
   background-color: #fff;
 }
+.footerBox{
+  height: 48px;
+}

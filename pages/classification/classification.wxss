@@ -1,1 +1,49 @@
 /* pages/classification/classification.wxss */
+.listbox{
+  background-color: #edece8;
+  padding:20rpx 20rpx;
+}
+/* .order_item:nth-child(1) {
+  border-top: 1rpx solid #ccc;
+} */
+.order_item {
+  /* border-bottom: 1rpx solid #ccc; */
+  background-color: #ffffff;
+  width: 100%;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  color: #666;
+}
+.order_item .order_no_wrap {
+  padding: 20rpx 20rpx;
+}
+.order_item text{
+  vertical-align: top;
+  margin-left: 20rpx;
+  font-size: 40rpx;
+}
+.order_item .order_price_wrap {
+  padding: 20rpx 20rpx;
+  text-align: right;
+}
+.zdButton{
+  margin-right: 10rpx;
+}
+.order_item .order_price_wrap .order_price_value {
+  color: var(--themeColor);
+  font-size: 36rpx;
+}
+.order_item .order_time_wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+.order_item .order_time_wrap .order_time_value {
+  color: black;
+}
+.footerBox{
+  height: 48px;
+  background-color: #edece8;
+  text-align: center;
+  line-height: 30px;
+}

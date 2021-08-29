@@ -1,7 +1,27 @@
 <!--pages/classification/classification.wxml-->
 <van-dropdown-menu>
-  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item bind:change="onSwitch1Change" value="{{ switch1 }}" options="{{ option1 }}" />
   <van-dropdown-item id="item" title="{{ itemTitle }}">
     <van-area bind:change="onChange" bind:confirm="onConfirm" bind:cancel="onClose" area-list="{{ areaList }}" columns-num="{{ 2 }}" title="请选择" />
   </van-dropdown-item>
 </van-dropdown-menu>
+<view class="listbox">
+  <navigator class="order_item" wx:for="{{goodsList}}" wx:key="index" url="/pages/goods_detail/goods_detail?goods_id={{item.id}}">
+    <view class="order_no_wrap">
+      <van-image   
+      src="{{item.path}}"
+        width="50"
+        height="50">
+      </van-image>
+      <text>{{item.title}}</text>
+    </view>
+    <view class="order_price_wrap">
+      <van-icon color="#4fc08d" name="map-marked" />
+      <text>{{item.province + item.city}}</text>
+    </view>
+  </navigator>
+</view>
+
+  <view class="footerBox">
+   {{wenan}}
+  </view>

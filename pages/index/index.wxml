@@ -19,17 +19,16 @@
     </navigator>
   </view>
   <!-- 楼层区 -->
-  <view class="index_floor" wx:for="{{floorList}}" wx:for-item="item1" wx:for-index="index1" wx:key="name">
+  <view class="index_floor" >
     <view class="floor_title">
       推荐好货
       <text>猜猜你是否喜欢</text>
     </view>
     <view class="floor_list">
-      <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="name" url="{{util.urlFormat(item2.navigator_url)}}">
-        <image src="{{item2.image_src}}"/>
-        <text class="list_name">爱上了大飒飒ask的骄傲快乐圣诞节大厦深刻理解的卡拉圣诞节</text>
-        <text class="list_jj">撒低级阿萨的卡拉库里圣诞快乐啊是多久啊觉得啊撒旦吉萨离开</text>
-        <text class="list_dw">撒低级阿萨的卡拉库里圣诞快乐啊是多久啊觉得啊撒旦吉萨离开</text>
+      <navigator wx:for="{{goodsList}}" wx:for-item="item2" wx:for-index="index2" wx:key="name" url="/pages/goods_detail/goods_detail?goods_id={{item2.id}}">
+        <image src="{{item2.path}}"/>
+        <text class="list_name">{{item2.title}}</text>
+        <text class="list_dw">{{item2.province+item2.provincityce}}</text>
       </navigator>
     </view>
   </view>
