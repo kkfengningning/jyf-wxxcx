@@ -13,7 +13,8 @@ Page({
         //是否被保存
         isCollect: false,
         isHy: 0,
-        tradeFree:0
+        tradeFree:0,
+        id:''
     },
     GoodInfo: {},
     //获取详情数据
@@ -35,7 +36,27 @@ Page({
         })
 
     },
+    mfLook() {
+        let that = this;
+        wxRequest('POST','/wx/supplyDemand/concatInfo',{
+            id:this.data.id
+          }).then(res => {
+            let goodInfo = that.data.goodInfo;
+            goodInfo.concat = res.data.result;
+            that.setData({
+                isHy: 1,
+                goodInfo,
+            })
+         })
+         .catch(err => {
+            //请求失败
+            console.log('登录失败11！' + err)
+         })
+    },
     getGoodsInfo(id){
+        this.setData({
+            id: id,
+        })
         wxRequest('POST','/wx/supplyDemand/detail',{
             id
           }).then(res => {

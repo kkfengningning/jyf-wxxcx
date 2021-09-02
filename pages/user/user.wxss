@@ -108,5 +108,9 @@ page {
   background-color: #fff;
 }
 .zdButton{
-  margin-right: 20rpx;
+  margin:0 10rpx;
+}
+.mpFooter{
+  text-align: center;
+  padding-top: 10rpx;
 }

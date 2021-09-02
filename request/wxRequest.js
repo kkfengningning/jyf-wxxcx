@@ -5,8 +5,7 @@ const PUT = 'PUT';
 const FORM = 'FORM';
 const DELETE = 'DELETE';
 
-const baseURL = 'http://192.168.0.118:8080';
-
+const baseURL = 'http://192.168.0.118:8080'; 
 export const wxRequest = (method, url, data) =>{
     return new Promise(function(resolve, reject) {
         let header = {
@@ -25,13 +24,16 @@ export const wxRequest = (method, url, data) =>{
                     resolve(res);
                 } else {
                     //其他异常
+                    console.log(11777);
                     reject('运行时错误,请稍后再试');
                 }
             },
             fail(err) {
                 //请求失败
+                console.log(22333);
                 reject(err)
             }
         })
     })
 }
+export const URL = baseURL;

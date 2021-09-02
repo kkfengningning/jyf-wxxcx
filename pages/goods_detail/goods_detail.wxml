@@ -50,7 +50,7 @@
   <view  class="tel_header">联系方式</view>
   <view  class="tel_main">您当前可以免费{{tradeFree}}次查看联系方式</view>
   <view class="zhiifu">
-    <van-button  type="primary" size="large">立即查看</van-button>
+    <van-button  bindtap="mfLook"  type="primary" size="large">立即查看</van-button>
   </view>
 </view>
 <view class="detail_tel" wx:if="{{isHy==1}}">

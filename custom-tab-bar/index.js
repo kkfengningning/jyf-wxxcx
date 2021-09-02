@@ -14,12 +14,6 @@ Component({
         "selectedIconPath": "/icons/home-o.png"
       },
       {
-        "pagePath": "/pages/classification/classification",
-        "text": "分类",
-        "iconPath": "/icons/category.png",
-        "selectedIconPath": "/icons/category-o.png"
-      },
-      {
         "pagePath": "/pages/cart/cart",
         "text": "通讯录",
         "iconPath": "/icons/cart.png",

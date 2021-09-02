@@ -11,7 +11,7 @@
     <view class="order_price_wrap">
       <van-button  bind:click="toDetail" data-item="{{item}}" custom-class="zdButton" round size="small">查看</van-button>
       <van-button custom-class="zdButton" data-item="{{item}}" bind:click="xiajia" round size="small">下架</van-button>
-      <van-button custom-class="zdButton" round size="small">修改</van-button>
+      <van-button custom-class="zdButton"   bind:click="toUp" data-item="{{item}}" round size="small">修改</van-button>
     </view>
   </view>
   <view class="order_item" wx:for="{{orders_i}}" wx:key="index" wx:if="{{Tabs[1].isActive===true}}">

@@ -21,7 +21,6 @@ page {
   display: flex;
 }
 .detail_xinxi {
-  border-bottom: 8rpx solid #ccc;
   padding-bottom: 20rpx;
 }
 .detail_info .info_detail .info_name {
@@ -47,12 +46,14 @@ page {
   border-bottom: 8rpx solid #ccc;
 }
 .tel_header{
-  padding-left: 20rpx;
-  padding-top: 15rpx;
   font-size: 33rpx;
   font-family: SimHei;
   font-weight: 400;
   color: #969696;
+  padding-left: 20rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  border-bottom: 6rpx solid #edece8;
 }
 .tel-right{
   position:absolute;
@@ -78,13 +79,10 @@ page {
   margin-right: 20rpx;
   padding-bottom: 15rpx;
   padding-top: 15rpx;
-  border-bottom: 2rpx solid #ccc;
+  border-bottom: 4rpx solid #edece8;
 }
 .tel_item text{
   margin-left: 10rpx;
-}
-.tel_item:last-child{
-  border:none;
 }
 .tel_item_nam{
   font-size: 27rpx;
@@ -104,10 +102,14 @@ page {
   font-size: 24rpx;
 }
 .detail_more .more_title {
-  padding: 10rpx;
-  font-size: 36rpx;
-  font-weight: bold;
-  color: var(--themeColor);
+  font-size: 33rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #969696;
+  padding-left: 20rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  border-bottom: 6rpx solid #edece8;
 }
 .btm_tool {
   border-top: 1rpx solid #ccc;
@@ -164,11 +166,27 @@ page {
   font-weight: 400;
   color: #969696;
   padding-left: 20rpx;
-  padding-top: 15rpx;
-  padding-bottom: 15rpx;
-  border-bottom: 2rpx solid #ccc;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  border-bottom: 6rpx solid #edece8;
 }
 .txl_img{
   width: 100%;
   height: 173rpx;
+  line-height: 173rpx;
+  background-color: var(--themeColor);
+}
+.txl_img{
+  font-size: 36rpx;
+  font-family: SimHei;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.info_icon {
+  height: 133rpx;
+  width: 133rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
 }

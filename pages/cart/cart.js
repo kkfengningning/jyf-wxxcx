@@ -9,17 +9,20 @@ Page({
       areaList : areaList,
       itemTitle: '地区',
       maiList:[],
-      pageNum: 1
-
+      pageNum: 1,
+      province:'',
+      city:'',
     },
     //添加收货地址事件
+    onReady: function () {
+      this.feachList()
+    },
     onShow: function () {
         if (typeof this.getTabBar === 'function' && this.getTabBar()) {
           this.getTabBar().setData({
-            selected: 2  //这个数字是当前页面在tabBar中list数组的索引
+            selected: 1  //这个数字是当前页面在tabBar中list数组的索引
           })
         }
-        this.feachList()
       },
     //商品选择状态改变
     handleItemChange(e) {
@@ -47,6 +50,15 @@ Page({
     onClose() {
       this.selectComponent('#item').toggle();
     },
+    onPullDownRefresh: function () {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
+      this.setData({
+        pageNum: 1,
+        province:'',
+        city:'',
+      })
+      this.feachList()
+    },
     feachList(more){
       console.log(122333);
       wxRequest('POST','/wx/maiList/list',{
@@ -54,6 +66,8 @@ Page({
         city:this.data.city,
         pageNum: this.data.pageNum
       }).then(res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
         this.setData({ 
           maiList:more?this.data.maiList.concat(res.data.result.mailList):res.data.result.mailList,
               wenan:res.data.result.mailList.length > 0 ?'下拉加载更多' : '暂无数据'

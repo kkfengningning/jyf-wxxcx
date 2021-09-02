@@ -2,7 +2,8 @@
 <!-- 详情 -->
 <view class="detail_xinxi">
 <view class="txl_img">
-  <van-image width="100%" height="100%" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+  <image class="info_icon" src="{{goodInfo.logoUrl}}" />
+  <text>{{goodInfo.name}}</text>
 </view>
  <view class="txl_xinxi">通讯录信息</view>
  <view>
@@ -36,14 +37,15 @@
     <van-button  type="primary" size="large">立即支付</van-button>
   </view>
 </view>
-<view wx:if="{{isHy==0 && tradeFree>0}}" class="detail_tel">
+<view  wx:if="{{isHy==0 && tradeFree>0}}" class="detail_tel">
   <view  class="tel_header">联系方式</view>
   <view  class="tel_main">您当前可以免费{{tradeFree}}次查看联系方式</view>
   <view class="zhiifu">
-    <van-button  type="primary" size="large">立即查看</van-button>
+    <van-button bindtap="mfLook"  type="primary" size="large">立即查看</van-button>
   </view>
 </view>
 <view class="detail_tel" wx:if="{{isHy==1}}">
+  <view  class="tel_header">联系方式</view>
   <view  class="tel_item">
     <van-icon color="#818181" name="phone" />
    <text class="tel_item_nam">电话：{{goodInfo.concat.telephoneNumber}}</text>

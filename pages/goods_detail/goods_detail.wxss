@@ -8,29 +8,28 @@ page {
 .detail_swiper swiper image {
   width: 60%;
 }
-.detail_info {
+/* .detail_info {
   border-bottom: 8rpx solid #ccc;
-}
+} */
 .detail_info .info_price {
   padding: 10rpx;
   font-size: 40rpx;
   font-weight: bold;
   color: var(--themeColor);
 }
-.detail_info .info_detail {
-  display: flex;
-}
 .detail_xinxi {
-  border-bottom: 8rpx solid #ccc;
+  border-bottom: 20rpx solid #edece8;
   padding-bottom: 20rpx;
 }
 .detail_info .info_detail .info_name {
-  padding-left: 20rpx;
-  font-size: 30rpx;
   font-family: SimHei;
   font-weight: 400;
+  padding-left: 27rpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  border-bottom: 6rpx solid #edece8;
+  font-size: 30rpx;
   color: #000000;
-  line-height: 46rpx;
 }
 .xinxi_price{
   padding-left: 20rpx;
@@ -44,7 +43,7 @@ page {
   color: #000000;
 }
 .detail_tel{
-  border-bottom: 8rpx solid #ccc;
+  border-bottom: 20rpx solid #edece8;
 }
 .tel_header{
   padding-left: 20rpx;
@@ -78,7 +77,7 @@ page {
   margin-right: 20rpx;
   padding-bottom: 15rpx;
   padding-top: 15rpx;
-  border-bottom: 2rpx solid #ccc;
+  border-bottom: 4rpx solid #edece8;
 }
 .tel_item:last-child{
   border:none;
@@ -92,19 +91,15 @@ page {
 .zhiifu{
   padding: 20rpx;
 }
-.detail_info .info_detail .info_collect {
-  flex: 1;
-  text-align: center;
-  border-left: 2rpx solid #888;
-}
-.detail_info .info_detail .info_collect .collect_text {
-  font-size: 24rpx;
-}
 .detail_more .more_title {
-  padding: 10rpx;
-  font-size: 36rpx;
-  font-weight: bold;
-  color: var(--themeColor);
+  font-family: SimHei;
+  font-weight: 400;
+  padding-left: 27rpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  border-bottom: 6rpx solid #edece8;
+  font-size: 34rpx;
+  color: #969696;
 }
 .btm_tool {
   border-top: 1rpx solid #ccc;

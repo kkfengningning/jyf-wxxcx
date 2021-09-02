@@ -20,3 +20,10 @@
 .footerBox{
   height: 48px;
 }
+ .mpFooter{
+  text-align: left;
+  font-family: Adobe Heiti Std;
+  font-weight: bold;
+  color: #919191;
+  padding-top: 29rpx;
+ }

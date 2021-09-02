@@ -11,6 +11,7 @@
     model:value="{{ username }}"
     label="用户名"
     placeholder="请输入用户名"
+    input-align="right"
   />
   <van-cell-group>
   <!-- <van-field
@@ -29,18 +30,19 @@
   model:value="{{ mobilePhone }}"
     label="手机号"
     placeholder="请输入手机号"
-    border="{{ true }}"
+    input-align="right"
   />
   <van-field
   model:value="{{ telephoneNumber }}"
     label="电话号码"
-    placeholder="请输入手机号"
-    border="{{ true }}"
+    placeholder="请输入电话号码"
+    input-align="right"
   />
   <van-field
     model:value="{{ wechatNumber }}"
     label="微信"
     placeholder="请输入微信号"
+    input-align="right"
   />
   <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <van-cell title="地区">
@@ -66,7 +68,8 @@
   <van-field
     model:value="{{ receivingType }}"
     label="收货类型"
-    placeholder="请选择收获类型"
+    placeholder="请输入收货类型"
+    input-align="right"
   />
   <van-action-sheet
     show="{{ shfsshow }}"
@@ -76,7 +79,7 @@
    />
   <van-cell title="收货方式" bindtap="shfsChange" is-link value="{{receivingMethod}}" />
   <van-cell title="头像上传"  />
-  <van-uploader deletable="{{ true }}"  max-count="1" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deletRead" />
+  <van-uploader  deletable="{{ true }}"  max-count="1" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deletRead" />
   <van-cell title="公司介绍"  />
   <hf_editor width="100%" height="600rpx" insertPicture="{{true}}" placeholder="编写文章..." bind:Content="getHtml" bind:insertImage="insertImage" id="hf_editor"/>
   <view  class="submit_box">
@@ -84,3 +87,4 @@
   </view>
 
 </van-cell-group>
+<van-toast id="van-toast" />

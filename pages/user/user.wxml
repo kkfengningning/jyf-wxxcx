@@ -35,11 +35,11 @@
           <view class="iconfont icon-fukuantongzhi"></view>
           <view class="order_name">发布供求</view>
         </navigator>
-        <navigator url="/pages/order/order?type=3">
+        <navigator bindtap="call" data-num="18888888888">
           <view class="iconfont icon-receipt-address"></view>
           <view class="order_name">平台电话</view>
         </navigator>
-        <navigator>
+        <navigator  bindtap="call" data-num="18888888888">
           <view class="iconfont icon-tuihuotuikuan_dianpu"></view>
           <view class="order_name">在线客服</view>
         </navigator>
@@ -54,15 +54,15 @@
   <view class="addressItem">
     <van-card
      custom-class="item-card"
-      tag="标签"
-      desc="描述信息"
-      title="商品标题"
-      thumb="{{ imageURL }}"
+     desc="{{userInfo.type}}"
+      title="{{userInfo.name}}"
+      thumb="{{ userInfo.logoUrl }}"
     >
     </van-card>
-    <view>
+    <view class="mpFooter">
       <van-button custom-class="zdButton" round size="small">置顶</van-button>
-      <van-button  round size="small">查看</van-button>
+      <van-button custom-class="zdButton" data-item="{{userInfo.id}}" bindtap="toDetail"  round size="small">查看</van-button>
+      <van-button bindtap="toUpdate" custom-class="zdButton"  round size="small">修改</van-button>
     </view>
   </view>
   </view>

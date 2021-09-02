@@ -11,12 +11,16 @@ Page({
         //是否被保存
         isCollect: false,
         isHy: 0,
-        tradeFree:0
+        tradeFree:0,
+        id:''
     },
     GoodInfo: {},
     //获取详情数据
     //查询通讯录详情
     getGoodsInfo(id){
+        this.setData({
+            id: id,
+        })
         wxRequest('POST','/wx/maiList/detail',{
             id
           }).then(res => {
@@ -57,6 +61,23 @@ Page({
     call(e) {
         console.log(e.currentTarget.dataset.num)
         wx.makePhoneCall({  phoneNumber: e.currentTarget.dataset.num });
+    },
+    mfLook() {
+        let that = this;
+        wxRequest('POST','/wx/maiList/concat',{
+            id:this.data.id
+          }).then(res => {
+            let goodInfo = that.data.goodInfo;
+            goodInfo.concat = res.data.result;
+            that.setData({
+                isHy: 1,
+                goodInfo,
+            })
+         })
+         .catch(err => {
+            //请求失败
+            console.log('登录失败11！' + err)
+         })
     },
     /**
      * 生命周期函数--监听页面加载

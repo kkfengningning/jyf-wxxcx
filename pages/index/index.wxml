@@ -1,6 +1,5 @@
 <view class="pyg_index">
  <!-- 搜索框 -->
- <searchInput></searchInput>
   <!-- 搜索框 -->
   <!-- 轮播图 -->
   <view class="index_swiper">
@@ -13,7 +12,7 @@
   <!-- 分类 -->
   <!-- "{{item.navigator_url}}" -->
   <view class="index_cate">
-    <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/tel_detail/tel_detail?type=3">
+    <navigator wx:for="{{catesList}}" wx:key="name" bindtap="toFenlei" data-item="{{item}}">
       <image src="{{item.url}}" mode="widthFix" />
       <view class="index_cate_title">{{item.name}}</view>
     </navigator>
@@ -25,10 +24,10 @@
       <text>猜猜你是否喜欢</text>
     </view>
     <view class="floor_list">
-      <navigator wx:for="{{goodsList}}" wx:for-item="item2" wx:for-index="index2" wx:key="name" url="/pages/goods_detail/goods_detail?goods_id={{item2.id}}">
+      <navigator bindtap="toDetail" data-item="{{item2}}"  wx:for="{{goodsList}}" wx:for-item="item2" wx:for-index="index2" wx:key="name">
         <image src="{{item2.path}}"/>
         <text class="list_name">{{item2.title}}</text>
-        <text class="list_dw">{{item2.province+item2.provincityce}}</text>
+        <text class="list_dw">{{item2.province+item2.city}}</text>
       </navigator>
     </view>
   </view>

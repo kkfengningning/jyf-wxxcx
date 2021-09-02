@@ -2,6 +2,7 @@
 import { request } from "../../request/index.js";
 import { wxRequest } from "../../request/wxRequest.js";
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+var app = getApp()
 Page({
     data: {
         // 轮播图数组
@@ -61,6 +62,56 @@ Page({
                 //请求失败
                 console.log('登录失败！' + err.errMsg)
              })
+    },
+    toDetail(e){
+          if(app.globalData.hasLogin == true){
+            let item = e.currentTarget.dataset.item;
+            wx.navigateTo({
+                url: '/pages/goods_detail/goods_detail?goods_id='+item.id
+              })
+          } else {
+            Dialog.alert({
+              message: '您还未登录请先登录填写用户信息再进行操作',
+              confirmButtonText:'微信授权',
+              showCancelButton:'true',
+              confirmButtonOpenType:'getUserInfo'
+            }).then(() => {
+              wx.getUserInfo({
+                success: function(res) {
+                 console.log('getUserInfo',res);
+                  wx.navigateTo({
+                    url: '/pages/registered/registered',
+                  })
+                }
+              })
+            });
+            return;
+          }
+    },
+toFenlei(e){
+    if(app.globalData.hasLogin == true){
+    let item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+        url: '/pages/classification/classification?goods_id='+item.id
+        })
+    } else {
+    Dialog.alert({
+        message: '您还未登录请先登录填写用户信息再进行操作',
+        confirmButtonText:'微信授权',
+        showCancelButton:'true',
+        confirmButtonOpenType:'getUserInfo'
+    }).then(() => {
+        wx.getUserInfo({
+        success: function(res) {
+            console.log('getUserInfo',res);
+            wx.navigateTo({
+            url: '/pages/registered/registered',
+            })
+        }
+        })
+    });
+    return;
+    }
     },
     onShow: function () {
         if (typeof this.getTabBar === 'function' && this.getTabBar()) {

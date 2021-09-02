@@ -18,7 +18,7 @@
       title="{{item.name}}"
       thumb="{{ item.logoUrl }}"
     >
-      <view slot="footer">
+      <view class="mpFooter" slot="footer">
         {{item.receivingType}}
       </view>
     </van-card>

@@ -11,5 +11,6 @@
     "van-image": "@vant/weapp/image/index",
     "van-area": "@vant/weapp/area/index",
     "van-icon": "@vant/weapp/icon/index"
-  }
+  },
+  "navigationBarTitleText": "供求分类"
 }

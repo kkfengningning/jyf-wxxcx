@@ -1,5 +1,6 @@
 // pages/registered/registered.js
-import { wxRequest } from "../../request/wxRequest.js";
+import { wxRequest,URL } from "../../request/wxRequest.js";
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 var app = getApp()
 Page({
 
@@ -7,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goods_id:'',
     type:'',
     value: '',
     minOrderQuantity:'',
@@ -76,9 +78,53 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let pages = getCurrentPages();
+    let goods_id = pages[pages.length - 1].options.goods_id;
+    if(goods_id){
+      this.userInfo(goods_id);
+    }
+    this.setData({
+      goods_id
+    })
+    // this.getGoodInfo(goods_id)
   },
-
+  userInfo(id){
+    wxRequest('POST','/wx/supplyDemand/detail',{
+      id
+    }).then(res => {
+      console.log(111,res.data.result.images);
+      let images = [];
+      for(let i=0;i<res.data.result.images.length;i++){
+        console.log(111,res.data.result.images);
+        images.push({
+          url:res.data.result.images[i].path,
+          id:res.data.result.images[i].id,
+          name:res.data.result.images[i].name,
+        })
+      }
+      console.log('images',images);
+      this.setData({
+          type:res.data.result.type,
+          title:res.data.result.title,
+          classify:res.data.result. classify,
+          price:res.data.result.price,
+          minOrderQuantity:res.data.result.minOrderQuantity,
+          receivingSellRange:res.data.result.receivingSellRange,
+          receivingSellType:res.data.result.receivingSellType,
+          html:res.data.result.detail,
+          region:[res.data.result.province,res.data.result.city,'全部'],
+          concatName:res.data.result.concat.concatName,
+          telephone:res.data.result.concat.telephone,
+          phone:res.data.result.concat.phone,
+          wechatNumber:res.data.result.concat.wechatNumber,
+          concatAddress:res.data.result.concat.concatAddress,
+          logoId:this.data.fileList[0]?this.data.fileList[0].id:null,
+          fileList : images
+        }
+      )
+      this.selectComponent("#hf_editor").setHtml(res.data.result.detail);
+     })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -168,7 +214,7 @@ Page({
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     console.log('file',file,file.url);
     wx.uploadFile({
-      url: 'http://192.168.0.118:8080/wx/file/imageUpload',// 仅为示例，非真实的接口地址
+      url: URL+'/wx/file/imageUpload',// 仅为示例，非真实的接口地址
       filePath: file.url,
       name: 'file',
       header: {
@@ -257,7 +303,72 @@ Page({
     console.log('name',this.data.fileList);
     let images = [];
     for (let i=0;i<this.data.fileList.length;i++){
-      images.push(this.data.fileList[i].url.id);
+      images.push(this.data.fileList[i].id);
+    }
+    var myreg=/^[1][3,4,5,7,8,9][0-9]{9}$/; 
+    if(this.data.type == ''){
+      Toast.fail('信息类型不能为空,请选择');
+      return;
+    }
+    if(this.data.title == ''){
+      Toast.fail('信息标题不能为空,请填写');
+      return;
+    }
+    if(this.data.classify == ''){
+      Toast.fail('分类不能为空,请选择');
+      return;
+    }
+    if(this.data.minOrderQuantity == ''){
+      Toast.fail('最小订货量不能为空,请填写');
+      return;
+    }
+    if(this.data.price == ''){
+      Toast.fail('价格不能为空,请填写');
+      return;
+    }
+    if(this.data.receivingSellType == ''){
+      Toast.fail('收货类型不能为空,请填写');
+      return;
+    }
+    if(this.data.phone == ''){
+      Toast.fail('手机号码不能为空,请填写');
+      return;
+    }
+    if (!myreg.test(this.data.phone)) {
+      Toast.fail('请填写正确的手机号码,请重新输入')
+      return;
+    }
+    if(images.length == 0){
+      Toast.fail('相册图片不能为空,请至少上传一张');
+      return;
+    }
+    if(this.data.concatName == ''){
+      Toast.fail('姓名不能为空,请填写');
+      return;
+    }
+    if(this.data.telephone == ''){
+      Toast.fail('电话号码不能为空,请填写');
+      return;
+    }
+    if(this.data.wechatNumber == ''){
+      Toast.fail('微信号不能为空,请填写');
+      return;
+    }
+    if(this.data.wechatNumber == ''){
+      Toast.fail('微信号不能为空,请填写');
+      return;
+    }
+    if(this.data.wechatNumber == ''){
+      Toast.fail('微信号不能为空,请填写');
+      return;
+    }
+    if(this.data.wechatNumber == ''){
+      Toast.fail('微信号不能为空,请填写');
+      return;
+    }
+    if(this.data.receivingSellRange == ''){
+      Toast.fail('收货类型不能为空,请填写');
+      return;
     }
     let params={
       title:this.data.title,
@@ -283,7 +394,14 @@ Page({
       detail:this.data.html,
       logoId:this.data.fileList[0]?this.data.fileList[0].url:null
     }
-    wxRequest('POST','/wx/supplyDemand/add',params).then(res => {
+    let url=''
+    if(this.data.goods_id){
+      params.id = this.data.goods_id;
+      url='/wx/supplyDemand/change'
+    } else{
+      url='/wx/supplyDemand/add'
+    }
+    wxRequest('POST',url,params).then(res => {
       //请求成功
       wx.switchTab({
         url: '/pages/user/user',
@@ -331,7 +449,7 @@ Page({
       success: res => {
         console.log(res);
         wx.uploadFile({ //调用图片上传接口
-          url: 'http://192.168.0.118:8080/wx/file/imageUpload', 
+          url: URL+'/wx/file/imageUpload', 
           filePath: res.tempFilePaths[0],
           name: 'file',
           header: {

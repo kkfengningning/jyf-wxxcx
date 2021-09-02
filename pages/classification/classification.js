@@ -90,12 +90,17 @@ Page({
   onUnload: function () {
 
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.setData({ 
+      province:'',
+      city:'',
+      pageNum: 1
+    });
+    this.feachList();
   },
 
   /**
@@ -126,22 +131,8 @@ Page({
             goodsList:more?this.data.goodsList.concat(res.data.result.recommendGoods):res.data.result.recommendGoods,
             wenan:res.data.result.recommendGoods.length > 0 ?'下拉加载更多' : '暂无数据'
         });
-        //请求成功
-        // this.setData({ 
-        //     orders_o: res.data.result.on,
-        //     orders_i: res.data.result.off,
-        //     Tabs:[{
-        //         id: 0,
-        //         name: '已发布',
-        //         isActive: true,
-        //         num:res.data.result.on.length
-        //     }, {
-        //         id: 1,
-        //         name: '已下架',
-        //         isActive: false,
-        //         num:res.data.result.off.length
-        //     }]
-        // });
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
      })
 },
 })

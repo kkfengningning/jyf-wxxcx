@@ -4,5 +4,5 @@
     "van-button": "@vant/weapp/button/index",
     "van-dialog": "@vant/weapp/dialog/index"
   },
-  "navigationBarTitleText": "品优首页"
+  "navigationBarTitleText": "旧衣同行"
 }

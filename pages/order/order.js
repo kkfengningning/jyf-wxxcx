@@ -77,5 +77,12 @@ Page({
         wx.navigateTo({
             url: '/pages/goods_detail/goods_detail?goods_id='+item.id
           })
+    },
+    toUp(e){
+        let item = e.currentTarget.dataset.item;
+        console.log(3311,item);
+        wx.navigateTo({
+            url: '/pages/release/release?goods_id='+item.id
+          })
     }
 })
